@@ -16,7 +16,7 @@ public class MailClient {
 
 	 public void sendMail(String receiver,String sender,String usernameurl, String Token) {
 	      // Recipient's email ID needs to be mentioned.
-	      String to = receiver;//change accordingly
+	      String to = receiver;//change 
 
 	      // Sender's email ID needs to be mentioned
 	      String from = sender;//change accordingly
