@@ -10,7 +10,7 @@ public interface OrderService {
 	public void add(Order order);
 	public void edit(Order order);
 	public void delete(int OrderId);
-	public User getUser(int OrderId);
+	public Order getUser(int OrderId);
 	public List getAllOrders();
 	
 }

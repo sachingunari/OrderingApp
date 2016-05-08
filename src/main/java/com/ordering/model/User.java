@@ -5,13 +5,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
-import org.hibernate.annotations.Check;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class User {
 	
-	public User(){}
+	 public User() {
+	    }
 	public User(int userId, String username, String password,
 			int accessLevel) {
 		super();
@@ -27,21 +27,50 @@ public class User {
 		this.password = password;
 		
 	}
-	
+  
+    
 	
 	@Id
 	@Column
-//	@GeneratedValue(strategy=GenerationType.AUTO) //for autonumber
+	//@GeneratedValue(strategy=GenerationType.AUTO) //for autonumber
 	private int userId;
 	
 	@Column
+	private boolean enabled;
+	
+	@NotNull
+	@Column
 	private String username;
 	
+	@NotNull
 	@Column
 	private String password;
 	
 	@Column
-	private int accessLevel;
+	private int accessLevel=1;
+		
+	@NotNull
+	@Column
+	
+	
+	public String getUsername() {
+		return username;
+	}
+	public boolean isEnabled() {
+		return enabled;
+	}
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	
 	
 	public int getUserId() {
@@ -62,10 +91,11 @@ public class User {
 	public void setLastname(String password) {
 		this.password = password;
 	}
-	public int getYearLevel() {
+	public int getAccessLevel() {
 		return accessLevel;
 	}
-	public void setYearLevel(int accessLevel) {
+	public void setAccessLevel(int accessLevel) {
 		this.accessLevel = accessLevel;
 	}
+		
 }

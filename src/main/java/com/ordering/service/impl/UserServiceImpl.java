@@ -18,7 +18,7 @@ public class UserServiceImpl implements UserService {
 	@Transactional
 	public void add(User user) {
 		
-		// validacion
+		// validation
 		userDao.add(user);
 	}
 
@@ -28,15 +28,20 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Transactional
-	public void delete(int userId) {
-		userDao.delete(userId);
+	public void delete(String username) {
+		userDao.delete(username);
+	}
+
+	@Transactional
+	public User getUser(String username) {
+		return userDao.getUser(username);
 	}
 
 	@Transactional
 	public User getUser(int userId) {
 		return userDao.getUser(userId);
 	}
-
+	
 	@Transactional
 	public List getAllUser() {
 		return userDao.getAllUser();

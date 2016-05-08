@@ -2,23 +2,30 @@ package com.ordering.controller;
 
 import java.util.Map;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.context.request.WebRequest;
 
+import com.ordering.dao.UserDao;
 import com.ordering.model.User;
 import com.ordering.service.UserService;
 
 @Controller
 public class UserController {
 	
+	UserDao userDao;
 	@Autowired
 	private UserService userService;
 	
+	 	
 	@RequestMapping("/")
 	public String setupForm(Map<String, Object> map){
 		User user = new User();
@@ -26,6 +33,14 @@ public class UserController {
 		map.put("userList", userService.getAllUser());
 		return "user";
 	}
+	
+	@RequestMapping(value = "/user/registration", method = RequestMethod.GET)
+	public String showRegistrationForm(WebRequest request, Model model) {
+	    User user = new User();
+	    model.addAttribute("user", user);
+	    return "registration";
+	}
+	
 	@RequestMapping(value="/addUser", method=RequestMethod.POST)
 	public String doActions(@ModelAttribute User user, BindingResult result, @RequestParam String action, Map<String, Object> map){
 		User userResult = new User();
@@ -39,11 +54,11 @@ public class UserController {
 			userResult = user;
 			break;
 		case "delete":
-			userService.delete(user.getUserId());
+			userService.delete(user.getUsername());
 			userResult = new User();
 			break;
 		case "search":
-			User searchedUser = userService.getUser(user.getUserId());
+			User searchedUser = userService.getUser(user.getUsername());
 			userResult = searchedUser!=null ? searchedUser : new User();
 			break;
 		}
@@ -53,4 +68,7 @@ public class UserController {
 		
 		return "user";
 	}
+	
+	 
+	   
 }

@@ -37,9 +37,9 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Transactional
-	public User getUser(int OrderId) {
+	public Order getUser(int OrderId) {
 		// TODO Auto-generated method stub
-		return orderDao.getUser(OrderId);
+		return orderDao.getOrder(OrderId);
 	}
 
 	@Transactional

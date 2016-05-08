@@ -25,7 +25,7 @@
 		</tr>
 		<tr>
 			<td>Year Level</td>
-			<td><form:input path="yearLevel" /></td>
+			<td><form:input path="accessLevel" /></td>
 		</tr>
 		<tr>
 			<td colspan="2">
@@ -48,7 +48,7 @@
 			<td>${user.userId}</td>
 			<td>${user.firstname}</td>
 			<td>${user.lastname}</td>
-			<td>${user.yearLevel}</td>
+			<td>${user.accessLevel}</td>
 		</tr>
 	</c:forEach>
 </table>

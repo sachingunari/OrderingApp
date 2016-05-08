@@ -33,14 +33,14 @@ public class OrderDaoImpl implements OrderDao {
 	@Override
 	public void delete(int OrderId) {
 		// TODO Auto-generated method stub
-		session.getCurrentSession().delete(getUser(OrderId));
+		session.getCurrentSession().delete(getOrder(OrderId));
 		
 	}
 
 	@Override
-	public User getUser(int OrderId) {
+	public Order getOrder(int OrderId) {
 		// TODO Auto-generated method stub
-		return (User)session.getCurrentSession().get(User.class, OrderId);
+		return (Order)session.getCurrentSession().get(Order.class, OrderId);
 	}
 
 	@Override
