@@ -50,20 +50,14 @@
                     <td><form:errors path="calories" cssClass="error"/></td>
                 </tr>
               <tr>
-                    <td>Category_Id: </td>
-<c:forEach items="${catList}" var="Category">
-	
-			<select width="100">${Category.category_Name}</select>
-			
-	
-	</c:forEach>
-	
-	<c:forEach items="${catList}" var="Category">
-		<tr>
-			<td>${Category.category_Name}</td>
-		</tr>
-	</c:forEach>
-
+                  <td>Category_Id: </td>
+                  <td>	
+							<select name="Category">
+						<c:forEach items="${catList}" var="Category">
+						    <option value="${Category.category_Id}">${Category.category_Name}</option>
+						</c:forEach>
+						</select>
+				</td>
                 </tr>
                 <tr>
                     <td align="left"><input type="submit"  name="action" value="Create"/></td>
