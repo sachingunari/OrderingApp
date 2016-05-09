@@ -7,6 +7,14 @@ import javax.persistence.Id;
 @Entity
 public class Category {
 
+	public int getCategory_Id() {
+		return category_Id;
+	}
+
+	public void setCategory_Id(int category_Id) {
+		this.category_Id = category_Id;
+	}
+
 	@Id
 	@Column(name = "category_Id")
 	private int category_Id;

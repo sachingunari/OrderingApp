@@ -24,7 +24,7 @@ public class MailClient {
 	      final String password = "project275";//change accordingly
 
 	      // Assuming you are sending email through relay.jangosmtp.net
-	      String host = "relay.jangosmtp.net";
+	      String host = "smtp.sendgrid.net";
 
 	      Properties props = new Properties();
 	      props.put("mail.smtp.auth", "true");

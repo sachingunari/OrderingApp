@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.validation.Valid;
 
+import org.apache.catalina.connector.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -52,7 +53,7 @@ public class AdminController {
 	
 	@RequestMapping(value = "/a", params={ "name" , "cooking_Time", "cost", "pic_Url", "calories"}, method = RequestMethod.POST)
     public String doLogin(@Valid @ModelAttribute("user") Item itemForm,
-            BindingResult result, @RequestParam String action, Map<String, Object> model) {
+            BindingResult result, @RequestParam String action,@RequestParam("Category") String category, Map<String, Object> model) {
 	 	//itemservice = new ItemServiceImpl();
 		//Item item = userService.getUser(userForm.getUsername());
 		Item item = new Item();
@@ -61,8 +62,10 @@ public class AdminController {
 		item.setCooking_Time(itemForm.getCooking_Time());
 		item.setCost(itemForm.getCost());
 		item.setPic_Url(itemForm.getPic_Url());
-		item.setCategory_Id(itemForm.getCategory_Id());
+		
+		item.setCategory_Id(Integer.parseInt(category));
 		item.setId(itemForm.getId());
+	
 		
 		
 		try {
