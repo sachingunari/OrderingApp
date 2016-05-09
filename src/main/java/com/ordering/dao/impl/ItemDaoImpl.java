@@ -33,14 +33,15 @@ public class ItemDaoImpl implements ItemDao {
 	@Override
 	public void delete(int ItemId) {
 		// TODO Auto-generated method stub
-		session.getCurrentSession().delete(getUser(ItemId));
+		session.getCurrentSession().delete(getItem(ItemId));
 		
 	}
-
+	//public Item getItem(int ItemId);
+	
 	@Override
-	public User getUser(int ItemId) {
+	public Item getItem(int ItemId) {
 		// TODO Auto-generated method stub
-		return (User)session.getCurrentSession().get(User.class, ItemId);
+		return (Item)session.getCurrentSession().get(Item.class, ItemId);
 	}
 
 	@Override

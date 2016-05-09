@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.ordering.dao.ItemDao;
 import com.ordering.dao.UserDao;
+import com.ordering.dao.impl.ItemDaoImpl;
 import com.ordering.model.Item;
 import com.ordering.model.User;
 import com.ordering.service.ItemService;
@@ -19,6 +20,7 @@ public class ItemServiceImpl implements ItemService {
 	@Transactional
 	public void add(Item item) {
 		// TODO Auto-generated method stub
+		//itemDao = new ItemDaoImpl();
 		itemDao.add(item);
 		
 	}
@@ -38,9 +40,9 @@ public class ItemServiceImpl implements ItemService {
 	}
 
 	@Transactional
-	public User getUser(int ItemId) {
+	public Item getItem(int ItemId) {
 		// TODO Auto-generated method stub
-		return itemDao.getUser(ItemId);
+		return itemDao.getItem(ItemId);
 	}
 
 	@Transactional
@@ -48,5 +50,7 @@ public class ItemServiceImpl implements ItemService {
 		// TODO Auto-generated method stub
 		return itemDao.getAllItems();
 	}
+
+	
 
 }

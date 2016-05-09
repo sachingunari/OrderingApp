@@ -22,7 +22,7 @@ import com.ordering.service.UserService;
 
 @Controller
 public class SignupController {
-	
+		
 	UserDao userDao;
 	@Autowired
 	private UserService userService;
