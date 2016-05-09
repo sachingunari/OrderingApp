@@ -7,6 +7,7 @@
     <session-factory>        
         <mapping class="com.ordering.model.User" />
         <mapping class="com.ordering.model.Item" />
+        <mapping class="com.ordering.model.Category" />
         
     </session-factory>         
 </hibernate-configuration>

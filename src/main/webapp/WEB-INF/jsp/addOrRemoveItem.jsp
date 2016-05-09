@@ -49,10 +49,21 @@
                     <td><form:input path="calories" size="30"/></td>
                     <td><form:errors path="calories" cssClass="error"/></td>
                 </tr>
-                <tr>
+              <tr>
                     <td>Category_Id: </td>
-                    <td><form:input path="category_Id" size="30"/></td>
-                    <td><form:errors path="category_Id" cssClass="error"/></td>
+<c:forEach items="${catList}" var="Category">
+	
+			<select width="100">${Category.category_Name}</select>
+			
+	
+	</c:forEach>
+	
+	<c:forEach items="${catList}" var="Category">
+		<tr>
+			<td>${Category.category_Name}</td>
+		</tr>
+	</c:forEach>
+
                 </tr>
                 <tr>
                     <td align="left"><input type="submit"  name="action" value="Create"/></td>

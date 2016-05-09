@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ordering.dao.ItemDao;
 import com.ordering.dao.UserDao;
+import com.ordering.model.Category;
 import com.ordering.model.Item;
 import com.ordering.model.User;
+import com.ordering.service.CategoryService;
 import com.ordering.service.ItemService;
 //import com.ordering.service.UserService;
 import com.ordering.service.impl.ItemServiceImpl;
@@ -27,16 +29,24 @@ public class AdminController {
 	ItemDao itemDao;
 	@Autowired
 	private ItemService itemservice;
+	@Autowired
+	private CategoryService categoryservice;
 	@RequestMapping(value = "/a", method = RequestMethod.GET)
 //	@RequestMapping(value = "/signup", params={ "username" , "password"}, method = RequestMethod.POST)   
     public String doLogin(Map<String, Object> model) {
 	 	
         Item item = new Item();
+        Category cat=new Category();
         model.put("item", item);
+        
         
         ArrayList tempList = new ArrayList<>();
 		tempList =(ArrayList) itemservice.getAllItems();
 		model.put("studentList", tempList);
+		
+		ArrayList categoryList = new ArrayList<>();
+		categoryList =(ArrayList) categoryservice.getAllCategories();
+		model.put("catList", categoryList);
 		
         return "addOrRemoveItem";
     }

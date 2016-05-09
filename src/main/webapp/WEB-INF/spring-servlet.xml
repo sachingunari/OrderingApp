@@ -22,6 +22,8 @@
 		<!-- Definition for spellChecker bean -->
    <bean id="itemService" class="com.ordering.service.impl.ItemServiceImpl">
    </bean>
+   <bean id="categoryService" class="com.ordering.service.impl.CategoryServiceImpl">
+   </bean>
 		
 
 	<bean id="propertyConfigurer"
