@@ -28,7 +28,7 @@ public class AdminController {
 	@Autowired
 	private ItemService itemservice;
 	@RequestMapping(value = "/a", method = RequestMethod.GET)
-//	@RequestMapping(value = "/signup", params={ "username" , "password"}, method = RequestMethod.POST)
+//	@RequestMapping(value = "/signup", params={ "username" , "password"}, method = RequestMethod.POST)   
     public String doLogin(Map<String, Object> model) {
 	 	
         Item item = new Item();
