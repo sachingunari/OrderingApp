@@ -1,5 +1,6 @@
 package com.ordering.controller;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 import javax.validation.Valid;
@@ -10,6 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ordering.dao.ItemDao;
 import com.ordering.dao.UserDao;
@@ -31,12 +33,17 @@ public class AdminController {
 	 	
         Item item = new Item();
         model.put("item", item);
+        
+        ArrayList tempList = new ArrayList<>();
+		tempList =(ArrayList) itemservice.getAllItems();
+		model.put("studentList", tempList);
+		
         return "addOrRemoveItem";
     }
 	
 	@RequestMapping(value = "/a", params={ "name" , "cooking_Time", "cost", "pic_Url", "calories"}, method = RequestMethod.POST)
     public String doLogin(@Valid @ModelAttribute("user") Item itemForm,
-            BindingResult result, Map<String, Object> model) {
+            BindingResult result, @RequestParam String action, Map<String, Object> model) {
 	 	//itemservice = new ItemServiceImpl();
 		//Item item = userService.getUser(userForm.getUsername());
 		Item item = new Item();
@@ -46,25 +53,45 @@ public class AdminController {
 		item.setCost(itemForm.getCost());
 		item.setPic_Url(itemForm.getPic_Url());
 		item.setCategory_Id(itemForm.getCategory_Id());
-		item.setId(105);
+		item.setId(itemForm.getId());
 		
 		
 		try {
-			itemservice.add(item);
+			
+			switch(action.toLowerCase()){	//only in Java7 you can put String in switch
+			case "create":
+				itemservice.add(item);
+//				studentService.add(student);
+	//			studentResult = student;
+				break;
+			case "edit":
+				itemservice.edit(item);
+	//			studentResult = student;
+				break;
+			case "delete":
+				int idToDelete = item.getId();
+				itemservice.delete(idToDelete);
+				Item newItem = new Item();
+				model.put("item", newItem);
+		        break;
+			}
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			System.out.println(e.getCause());
+			System.out.println(e.getMessage());
+			
 		}
-		
+		ArrayList tempList = new ArrayList<>();
+		tempList =(ArrayList) itemservice.getAllItems();
+		model.put("studentList", tempList);
 		//Item item = new Item();
-        model.put("item", item);
-        return "addOrRemoveItem";
-//	 if (user!=null && userForm.getPassword().equals(user.getPassword())&&user.isEnabled()==true){
-//		 return "user";
-//	 }
-//	 else
-//		 return "login";
-//    }
+        if(!action.toLowerCase().equals("delete")){
+        	model.put("item", item);
+        }
+		return "addOrRemoveItem";
+
 	}
 	
 }
