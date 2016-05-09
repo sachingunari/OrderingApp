@@ -47,7 +47,7 @@ public class AdminController {
 		ArrayList categoryList = new ArrayList<>();
 		categoryList =(ArrayList) categoryservice.getAllCategories();
 		model.put("catList", categoryList);
-		
+		  
         return "addOrRemoveItem";
     }
 	
