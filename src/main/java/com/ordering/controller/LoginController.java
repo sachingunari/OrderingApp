@@ -22,14 +22,21 @@ public class LoginController {
 	@Autowired
 	private UserService userService;
 	
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String viewLogin(Map<String, Object> model) {
+	@RequestMapping(value = "/loginAdmin", method = RequestMethod.GET)
+    public String loginAdmin(Map<String, Object> model) {
         User user = new User();
         model.put("user", user);
-        return "login";
+        return "adminLogin";
     }
 	
-	 @RequestMapping(value = "/login", params={ "username" , "password"}, method = RequestMethod.POST)
+	@RequestMapping(value = "/loginCustomer", method = RequestMethod.GET)
+    public String loginCustomer(Map<String, Object> model) {
+        User user = new User();
+        model.put("user", user);
+        return "loginCustomer";
+    }
+	
+	 @RequestMapping(value = "/loginAdmin", params={ "username" , "password"}, method = RequestMethod.POST)
 	    public String doLogin(@Valid @ModelAttribute("user") User userForm,
 	            BindingResult result, Map<String, Object> model) {
 		 	
@@ -41,7 +48,7 @@ public class LoginController {
 			 
 		 }
 		 else
-			 return "login";
+			 return "tokenverify";
 	       
 	    }
 	

@@ -4,29 +4,41 @@
  
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
+
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Login</title>
-<style>
-    .error {
-        color: red; font-weight: bold;
-    }
-</style>
+
+
+  <title>TakeOutOrder</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  
 </head>
-<body>
+
+</head>
+
+
+<body>                    
+<body background="file:///C:/Users/Saurabh/git/OrderingApp/src/main/webapp/WEB-INF/Images/tk.jpg">
+
+
     <div align="center">
-        <h2>Spring MVC SIGN UP Form</h2>
+        <h2>Please check your email inbox and enter the token below</h2>
         <table border="0" width="90%">
         <form:form action="tokenverify" commandName="tokenverify">
-                <tr>
-                    <td align="left" width="20%">Email: </td>
-                    <td align="left" width="40%"><form:input path="userId" size="30"/></td>
-                    <td align="left"><form:errors path="userId" cssClass="error"/></td>
+                <tr>					
+					Token:
+                    <input type="text" name="token" value="" required="required"> 
                 </tr>
-                
+                    <br>
+                    <br>
                     <td></td>
-                    <td align="center"><input type="submit" value="signup"/></td>
+                    <td align="center"><input type="submit" value="submit"/></td>
                     <td></td>
                 </tr>
         </form:form>

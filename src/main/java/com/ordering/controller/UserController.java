@@ -31,7 +31,7 @@ public class UserController {
 		User user = new User();
 		map.put("user", user);
 		map.put("userList", userService.getAllUser());
-		return "user";
+		return "index";
 	}
 	
 	@RequestMapping(value = "/user/registration", method = RequestMethod.GET)

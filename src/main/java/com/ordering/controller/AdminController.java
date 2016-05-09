@@ -39,7 +39,6 @@ public class AdminController {
         Category cat=new Category();
         model.put("item", item);
         
-        
         ArrayList tempList = new ArrayList<>();
 		tempList =(ArrayList) itemservice.getAllItems();
 		model.put("studentList", tempList);

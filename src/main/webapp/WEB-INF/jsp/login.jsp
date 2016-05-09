@@ -18,7 +18,7 @@
     <div align="center">
         <h2>Spring MVC Form Validation Demo - Login Form</h2>
         <table border="0" width="90%">
-        <form:form action="login" commandName="user">
+        <form:form action="POST" commandName="user">
                 <tr>
                     <td align="left" width="20%">Email: </td>
                     <td align="left" width="40%"><form:input path="username" size="30"/></td>
