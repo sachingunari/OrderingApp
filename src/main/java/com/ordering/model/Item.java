@@ -28,7 +28,7 @@ public class Item {
 
 
 	@Id
-	@Column(name = "Id")
+	@Column
 	private int Id;
 	
 	@Column

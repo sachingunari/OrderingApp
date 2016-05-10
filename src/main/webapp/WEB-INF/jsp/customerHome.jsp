@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ include file="/WEB-INF/jsp/includes.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -53,7 +54,7 @@ li.dropdown {
 .show {display:block;}
 </style>
 </head>
-<body>
+<body >
 
 <ul>
   <li><a class="active" href="#home">Home</a></li>
@@ -61,21 +62,47 @@ li.dropdown {
   <li class="dropdown">
     <a href="javascript:void(0)" class="dropbtn" onclick="myFunction()">Menu Category</a>
     <div class="dropdown-content" id="myDropdown">
-      <a href="appetizer">Appetizer</a>
-      <a href="desert">Desert</a>
-      <a href="drink">Drink</a>
-      <a href="maincourse">MainCourse</a>
+      <a href="#" id ="appetizer" onclick="showAppetizer()">Appetizer</a>
+      <a href="#" id ="desert" onclick="showDesert()">Desert</a>
+      <a href="#" id ="drink" onclick="showDrink()">Drink</a>
+      <a href="#" id ="maincourse" onclick="showMainCourse()">MainCourse</a>
     </div>
   </li>
 </ul>
 
 <h3><p>Click on the "Menu Category" link to see the menu.</p></h3>
+<p >
+	<table id= "category" border="1" style="display:none">
+	<c:forEach items="${itemList}" var="item">
+	<c:if test="${item.category_Id == 1}"> 
+		<tr>
+			<td>${item.Id}</td>
+			<td>${item.name}</td>
+			<td>${item.pic}</td>
+			<td>${item.cost}</td>
+			<td>${item.calories}</td>			
+		</tr>
+	</c:if>
+	</c:forEach>
+	</table>
+</p>
+
+
+
+
 
 <script>
 /* When the user clicks on the button, 
 toggle between hiding and showing the dropdown content */
 function myFunction() {
     document.getElementById("myDropdown").classList.toggle("show");
+}
+
+function showAppetizer(){
+	window.alert("hi");
+	console.log("inside method");
+	//document.getElementById("category").classList.toggle("show");
+	document.getElementById("category").style.display= "inherit";
 }
 
 // Close the dropdown if the user clicks outside of it

@@ -141,7 +141,7 @@
      
 	 
 
-      <form:form action="login"  method="POST"  class="navbar-form navbar-right"  commandName="user">
+      <form:form action="loginCust"  method="POST"  class="navbar-form navbar-right"  commandName="user">
 	 
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>                 
