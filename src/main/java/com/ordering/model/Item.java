@@ -17,7 +17,7 @@ public class Item {
 	
 	public Item(int id, String name, int category_Id, int cooking_Time, int cost, String pic_Url, int calories) {
 		super();
-		Id = id;
+		this.Id = id;
 		this.name = name;
 		this.category_Id = category_Id;
 		this.cooking_Time = cooking_Time;
@@ -54,7 +54,7 @@ public class Item {
 	}
 
 	public void setId(int id) {
-		Id = id;
+		this.Id = id;
 	}
 
 	public String getName() {

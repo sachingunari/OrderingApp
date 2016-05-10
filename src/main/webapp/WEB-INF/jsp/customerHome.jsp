@@ -52,6 +52,13 @@ li.dropdown {
 .dropdown-content a:hover {background-color: #f1f1f1}
 
 .show {display:block;}
+
+table, th, td {
+    padding: 5px;
+}
+table {
+    border-spacing: 20px;
+}
 </style>
 </head>
 <body >
@@ -70,26 +77,57 @@ li.dropdown {
   </li>
 </ul>
 
-<h3><p>Click on the "Menu Category" link to see the menu.</p></h3>
-<p >
-	<table id= "category" border="1" style="display:none">
-	<c:forEach items="${itemList}" var="item">
-	<c:if test="${item.category_Id == 1}"> 
-		<tr>
-			<td>${item.Id}</td>
-			<td>${item.name}</td>
-			<td>${item.pic}</td>
-			<td>${item.cost}</td>
-			<td>${item.calories}</td>			
-		</tr>
-	</c:if>
-	</c:forEach>
-	</table>
-</p>
+	<div name = "second" style=" width: 40%;float: right; position: relative;" id ="cart">
 
-
-
-
+		<h1>Your Shopping Cart</h1>
+			
+				<table>
+					<tr>
+						<td>Name:</td>
+						<td>Price:</td>
+					</tr>
+					<c:forEach items="${order}" var="item">
+					<tr>
+						<td>${item.name} </td>
+						<td>${item.cost} </td>
+					</tr>
+					</c:forEach>
+				</table>
+	</div>
+	<div name = "first" style=" width: 50%; float: left;">
+		<h3>
+			<p>Click on the "Menu Category" link to see the menu.</p>
+		</h3>
+		<table id= "category" border="1" style="display:none">
+			<c:forEach items="${itemList}" var="item">
+				<c:if test="${item.category_Id == 1}"> 
+				<tr>
+					<th>Id</th>
+					<th>Name</th>
+					<th>Image</th>
+					<th>Cost</th>
+					<th>Calories</th>
+					<th>Quantity</th>
+				</tr>
+				<form:form method="post" action="addProduct">
+				<tr>
+					<td><input value="${item.id}" name="id"></td>
+					<td><input value="${item.name}" name="name"></td>
+					<td><img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" height="42" width="42"></img></td>
+					<td><input value="${item.cost}" name="cost"></td>
+					<td><input value="${item.calories}" name="calories"></td>
+					<td><input type="text" placeholder="quantity"></input></td>
+					<td>
+					<input type="submit" value="Add to Cart" onclick="addToCart()"></input>
+					</td>		
+				</tr>
+				</form:form>
+				</c:if>
+				</c:forEach>
+		</table>
+	
+	</div>
+<p>
 
 <script>
 /* When the user clicks on the button, 
@@ -99,10 +137,19 @@ function myFunction() {
 }
 
 function showAppetizer(){
-	window.alert("hi");
-	console.log("inside method");
-	//document.getElementById("category").classList.toggle("show");
 	document.getElementById("category").style.display= "inherit";
+}
+
+function addToCart(){
+	
+	var cart ={"name":"","price":""};
+	
+	var name = document.getElementById("itemname").value;
+	var price = document.getElementById("itemprice").value;
+	
+	cart.name = name;
+	cart.price = price;
+	
 }
 
 // Close the dropdown if the user clicks outside of it

@@ -1,8 +1,11 @@
 package com.ordering.controller;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.context.request.WebRequest;
 
 import com.ordering.dao.UserDao;
@@ -23,6 +27,7 @@ import com.ordering.service.CategoryService;
 import com.ordering.service.ItemService;
 import com.ordering.service.UserService;
 
+@SessionAttributes({"order"})
 @Controller
 public class UserController {
 	
@@ -51,7 +56,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/loginCust", params={ "username" , "password"}, method = RequestMethod.POST)
-    public String doLogin(@Valid @ModelAttribute("user") User userForm,BindingResult result, Map<String, Object> model) {
+    public String doLogin(@Valid @ModelAttribute("user") User userForm,BindingResult result, Map<String, Object> model,HttpSession session,HttpServletRequest request) {
 		
 		Item item = new Item();
         Category cat=new Category();
@@ -66,10 +71,16 @@ public class UserController {
 		categoryList =(ArrayList) categoryservice.getAllCategories();
 		model.put("categoryList", categoryList);
 		
+		ArrayList<Item> order = new ArrayList<Item>();
+		
 		User user = userService.getUser(userForm.getUsername());
 	 
 		if(user!=null && userForm.getPassword().equals(user.getPassword())&&user.isEnabled()==true){
-		 
+			session = request.getSession();
+			session.setAttribute("users",userForm.getUsername());
+			session.setAttribute("accessLevel", userForm.getAccessLevel());
+			session.setAttribute("order", order);
+
 			return "customerHome";
 		}
 		else{
@@ -78,7 +89,28 @@ public class UserController {
        
     }
 	
-	
+	@RequestMapping(method = RequestMethod.GET)
+	  public String get(Model model) {
+	    if(!model.containsAttribute("cart")) {
+	      model.addAttribute("order", new ArrayList<Item>());
+	    }
+	    return "customerHome";
+	  }
+	  
+	  @RequestMapping(value = "/addProduct", method = RequestMethod.POST)
+	  public String addProduct(@ModelAttribute Item item,BindingResult result,
+	      @ModelAttribute("order")  List<Item> order,BindingResult results) {
+	    order.add(item);
+	    return "customerHome";
+	  }
+	  
+	  
+	  @RequestMapping(value = "/loginCust", method = RequestMethod.GET)
+	    public String doLogins(@Valid @ModelAttribute("order") User userForm,BindingResult result, Map<String, Object> model,HttpSession session,HttpServletRequest request) {
+		    User user = new User();
+		  ((Model) model).addAttribute("order", new ArrayList<Item>());
+		    return "loginCust";
+		}
 	
 	@RequestMapping(value="/addUser", method=RequestMethod.POST)
 	public String doActions(@ModelAttribute User user, BindingResult result, @RequestParam String action, Map<String, Object> map){
