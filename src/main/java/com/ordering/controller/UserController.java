@@ -152,7 +152,7 @@ public class UserController {
 	    public String doLogins(Map<String, Object> model,HttpSession session,HttpServletRequest request) {
 		    User user = new User();
 		  ((Model) model).addAttribute("order", new ArrayList<Item>());
-		    return "loginCust";
+		    return "customerHome";
 		}
 	
 	@RequestMapping(value="/addUser", method=RequestMethod.POST)
