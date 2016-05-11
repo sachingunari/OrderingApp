@@ -3,6 +3,7 @@ package com.ordering.controller;
 import java.util.ArrayList;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,9 +33,12 @@ public class AdminController {
 	@Autowired
 	private CategoryService categoryservice;
 	@RequestMapping(value = "/addremove", method = RequestMethod.GET)
-
-    public String doLogin(Map<String, Object> model) {
-	 	
+    public String doLogin(Map<String, Object> model,HttpServletRequest request) {
+		if(!request.getSession().getAttribute("accessLevel").toString().equals("0")){
+			 
+			return("index"); 
+			
+		}
         Item item = new Item();
         Category cat=new Category();
         model.put("item", item);
@@ -52,8 +56,11 @@ public class AdminController {
 	
 	@RequestMapping(value = "/addremove", params={ "name" , "cooking_Time", "cost", "pic_Url", "calories"}, method = RequestMethod.POST)
     public String doLogin(@Valid @ModelAttribute("user") Item itemForm,
-            BindingResult result, @RequestParam String action,@RequestParam("Category") String category, Map<String, Object> model) {
+            BindingResult result,HttpServletRequest request, @RequestParam String action,@RequestParam("Category") String category, Map<String, Object> model) {
 	
+		if(request.getSession().getAttribute("username") == null || request.getSession().getAttribute("username") == null)
+			return("index");
+		
 		
 		
 		ArrayList categoryList = new ArrayList<>();

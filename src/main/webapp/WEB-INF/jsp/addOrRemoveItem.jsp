@@ -10,7 +10,6 @@
 <title>Add Or Remove JSP</title>
 </head>
 <body>
-<h1>Add Or Remove JSP</h1>
 
 <div align="center">
         <h2> Add Item </h2>

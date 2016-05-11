@@ -67,8 +67,7 @@ table {
 <body >
 
 <ul>
-  <li><a class="active" href="#home">Home</a></li>
-  <li><a href="#news">News</a></li>
+  <li><a class="active" href="/CRUDWebAppMavenized">Home</a></li>
   <li class="dropdown">
     <a href="javascript:void(0)" class="dropbtn" onclick="myFunction()">Admin Console</a>
     <div class="dropdown-content" id="myDropdown">

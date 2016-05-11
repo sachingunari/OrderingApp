@@ -68,7 +68,9 @@ table {
 </head>
 <body >
 
-<ul>
+<ul style="
+    margin-left: 0px;
+">
   <li><a class="active" href="#home">Home</a></li>
   <li><a href="#news">News</a></li>
   <li class="dropdown">
@@ -80,6 +82,10 @@ table {
       <a href="#" id ="maincourse" onclick="showMainCourse()">MainCourse</a>
     </div>
   </li>
+  <li><a href = "logout" style="
+    border-left-width: 100px;
+    margin-left: 950px;
+">Logout</a></li>
 </ul>
 
 <div id ="shoppingCart">

@@ -134,7 +134,7 @@ footer {
                     <span class="icon-bar"></span>
                 </button>
                 <!-- changes made by swati -->
-                <a class="navbar-brand">TakeOutOrderApp</a>
+                <a class="navbar-brand" href = "/CRUDWebAppMavenized">TakeOutOrderApp</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

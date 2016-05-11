@@ -27,29 +27,30 @@ public class LoginController {
 	@RequestMapping(value = "/loginAdmin", method = RequestMethod.GET)
     public String loginAdmin(Map<String, Object> model,HttpSession session,HttpServletRequest request) {
 
-		if(request.getSession().getAttribute("username") == "sachingunari108@gmail.com"){
-			
-			return("adminHome");
-			
-		}
-        User user = new User();
+		User user = new User();
         model.put("user", user);
         return "adminLogin";
     }
 	
 	@RequestMapping(value = "/loginCustomer", method = RequestMethod.GET)
     public String loginCustomer(Map<String, Object> model,HttpSession session,HttpServletRequest request) {
-		
 		if(request.getSession().getAttribute("username") != null){
-			
 			return "customerHome";
 		}
 		
+//		request.getSession().setAttribute("userName",userForm.getUsername());
+	//	request.getSession().setAttribute("accessLevel",userForm.getAccessLevel());
+		 
         User user = new User();
         model.put("user", user);
         return "loginCustomer";
     }
 	
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public String logout(Map<String, Object> model,HttpSession session,HttpServletRequest request) {
+		request.getSession().invalidate();
+        return "index";
+    }
 	
 	
 	 @RequestMapping(value = "/loginAdmin", params={ "username" , "password"}, method = RequestMethod.POST)
@@ -61,16 +62,12 @@ public class LoginController {
 		 if (user!=null && userForm.getPassword().equals(user.getPassword())&&user.isEnabled()==true && user.getAccessLevel()==0){
 			 
 			 request.getSession().setAttribute("userName",userForm.getUsername());
-			 request.getSession().setAttribute("accessLevel",userForm.getAccessLevel());
-			 
+			 request.getSession().setAttribute("accessLevel",user.getAccessLevel());
 			 
 			 return "adminHome";
-		
-			 
 		 }
 		 else
 			 return "adminLogin";
-	       
 	    }
 	
 }

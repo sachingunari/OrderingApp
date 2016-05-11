@@ -70,7 +70,9 @@ public class UserController {
 	
 	@RequestMapping(value = "/loginCust", params={ "username" , "password"}, method = RequestMethod.POST)
     public String doLogin(@Valid @ModelAttribute("user") User userForm,BindingResult result, Map<String, Object> model,HttpSession session,HttpServletRequest request) {
-		
+		//request.getSession().setAttribute("userName",userForm.getUsername());
+		//request.getSession().setAttribute("accessLevel",userForm.getAccessLevel());
+
 		Item item = new Item();
         Category cat=new Category();
         model.put("item", item);
@@ -88,7 +90,7 @@ public class UserController {
 	 
 		if(user!=null && userForm.getPassword().equals(user.getPassword())&&user.isEnabled()==true){
 			session = request.getSession();
-			session.setAttribute("users",userForm.getUsername());
+			session.setAttribute("username",userForm.getUsername());
 			session.setAttribute("accessLevel", userForm.getAccessLevel());
 			session.setAttribute("order", order);
 
