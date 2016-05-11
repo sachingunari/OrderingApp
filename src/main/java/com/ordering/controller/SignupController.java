@@ -33,7 +33,15 @@ public class SignupController {
     public String viewLogin(Map<String, Object> model) {
         User user = new User();
         model.put("user", user);
-        return "signup";
+        return "403";
+    }
+	
+
+	@RequestMapping(value = "/tokenverify", method = RequestMethod.GET)
+    public String viewToken(Map<String, Object> model) {
+        User user = new User();
+        model.put("user", user);
+        return "403";
     }
 	
 	 @RequestMapping(value = "/signup", params={ "username" , "password"}, method = RequestMethod.POST)
@@ -69,7 +77,7 @@ System.out.println(userId);
          
          userService.edit(users);
          System.out.println("final Block");
-         return "user";
+         return "loginCustomer";
 	 }
 	 
 	 @RequestMapping(value = "/tokenverify", params={ "userId"}, method = RequestMethod.POST)
@@ -89,7 +97,7 @@ System.out.println(userId);
 	     }
 	         System.out.println("final Block");
           
-     return "user";
+     return "loginCustomer";
 	 }
 	 
 	 

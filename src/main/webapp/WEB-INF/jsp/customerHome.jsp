@@ -123,7 +123,7 @@ table {
 							@import "http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css";
 							@import	"http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css";
 						</style>	
-				      <input type="text"></input>
+				      <input type="text" name="date"></input>
 				      <span class="add-on">
 				        <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
 				      </span>

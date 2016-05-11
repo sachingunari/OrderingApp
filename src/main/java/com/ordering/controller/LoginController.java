@@ -2,6 +2,8 @@ package com.ordering.controller;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,32 +25,51 @@ public class LoginController {
 	private UserService userService;
 	
 	@RequestMapping(value = "/loginAdmin", method = RequestMethod.GET)
-    public String loginAdmin(Map<String, Object> model) {
+    public String loginAdmin(Map<String, Object> model,HttpSession session,HttpServletRequest request) {
+
+		if(request.getSession().getAttribute("username") == "sachingunari108@gmail.com"){
+			
+			return("adminHome");
+			
+		}
         User user = new User();
         model.put("user", user);
         return "adminLogin";
     }
 	
 	@RequestMapping(value = "/loginCustomer", method = RequestMethod.GET)
-    public String loginCustomer(Map<String, Object> model) {
+    public String loginCustomer(Map<String, Object> model,HttpSession session,HttpServletRequest request) {
+		
+		if(request.getSession().getAttribute("username") != null){
+			
+			return "customerHome";
+		}
+		
         User user = new User();
         model.put("user", user);
         return "loginCustomer";
     }
 	
+	
+	
 	 @RequestMapping(value = "/loginAdmin", params={ "username" , "password"}, method = RequestMethod.POST)
 	    public String doLogin(@Valid @ModelAttribute("user") User userForm,
-	            BindingResult result, Map<String, Object> model) {
+	            BindingResult result, Map<String, Object> model,HttpSession session,HttpServletRequest request) {
 		 	
 		 User user = userService.getUser(userForm.getUsername());
 		 
-		 if (user!=null && userForm.getPassword().equals(user.getPassword())&&user.isEnabled()==true){
+		 if (user!=null && userForm.getPassword().equals(user.getPassword())&&user.isEnabled()==true && user.getAccessLevel()==0){
+			 
+			 request.getSession().setAttribute("userName",userForm.getUsername());
+			 request.getSession().setAttribute("accessLevel",userForm.getAccessLevel());
+			 
 			 
 			 return "adminHome";
+		
 			 
 		 }
 		 else
-			 return "403";
+			 return "adminLogin";
 	       
 	    }
 	

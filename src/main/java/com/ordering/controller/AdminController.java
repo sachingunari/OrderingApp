@@ -32,7 +32,7 @@ public class AdminController {
 	@Autowired
 	private CategoryService categoryservice;
 	@RequestMapping(value = "/addremove", method = RequestMethod.GET)
-//	@RequestMapping(value = "/signup", params={ "username" , "password"}, method = RequestMethod.POST)   
+
     public String doLogin(Map<String, Object> model) {
 	 	
         Item item = new Item();
@@ -53,8 +53,13 @@ public class AdminController {
 	@RequestMapping(value = "/addremove", params={ "name" , "cooking_Time", "cost", "pic_Url", "calories"}, method = RequestMethod.POST)
     public String doLogin(@Valid @ModelAttribute("user") Item itemForm,
             BindingResult result, @RequestParam String action,@RequestParam("Category") String category, Map<String, Object> model) {
-	 	//itemservice = new ItemServiceImpl();
-		//Item item = userService.getUser(userForm.getUsername());
+	
+		
+		
+		ArrayList categoryList = new ArrayList<>();
+		categoryList =(ArrayList) categoryservice.getAllCategories();
+		model.put("catList", categoryList);
+		
 		Item item = new Item();
 		item.setName(itemForm.getName());
 		item.setCalories(itemForm.getCalories());
