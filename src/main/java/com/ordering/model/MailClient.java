@@ -55,7 +55,9 @@ public class MailClient {
 	         message.setSubject("Testing Subject");
 
 	         // Now set the actual message
-	         message.setText("http://localhost:8080/CRUDWebAppMavenized/enable/"+usernameurl+"/"+Token);
+	        // message.setText("http://localhost:8080/CRUDWebAppMavenized/enable/"+usernameurl+"/"+Token);
+	         message.setText("Greetings from TakeOut Restaurant. Please activate your account by clicking on link :http://localhost:8080/CRUDWebAppMavenized/enable/"+usernameurl+"/"+Token + " OR Please enter the token on the Verification Page : TOKEN CODE: "+Token);
+
 
 	         // Send message
 	         Transport.send(message);
