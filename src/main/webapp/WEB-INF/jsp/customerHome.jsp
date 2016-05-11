@@ -123,7 +123,7 @@ table {
 					<td> <input value="${totals}" style="display :none" name="total"></input></td>
 					
 					<td>
-					<input type="datetime-local" name="date"/>
+					<input type="datetime-local" name="date" min="Date()" max= "Date()+30" />
                     </td>
 					        									
 					<td> <input type="submit" value="placeorderz"></input></td> 
