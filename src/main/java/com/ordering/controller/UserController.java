@@ -149,7 +149,7 @@ public class UserController {
 	  
 	  
 	  @RequestMapping(value = "/loginCust", method = RequestMethod.GET)
-	    public String doLogins(@Valid @ModelAttribute("order") User userForm,BindingResult result, Map<String, Object> model,HttpSession session,HttpServletRequest request) {
+	    public String doLogins(Map<String, Object> model,HttpSession session,HttpServletRequest request) {
 		    User user = new User();
 		  ((Model) model).addAttribute("order", new ArrayList<Item>());
 		    return "loginCust";
@@ -198,11 +198,12 @@ public class UserController {
 		System.out.print(total);
 
 		Orders ord=new Orders();
+		int ord_Id=rand.nextInt(10000);
 		
 		for(Item i:order){
 			
 			System.out.println("ROSSSSSSST");
-			ord.setOrder_Id(rand.nextInt(10000));
+			ord.setOrder_Id(ord_Id);
 			ord.setItem_Quantity(i.getQuantity());
 			ord.setItem_Id(i.getId());
 			//ord.setOrder_Id(12);
