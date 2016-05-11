@@ -60,7 +60,6 @@ public class LoginController {
     }
 
 
-
 	
 	 @RequestMapping(value = "/loginAdmin", params={ "username" , "password"}, method = RequestMethod.POST)
 	    public String doLogin(@Valid @ModelAttribute("user") User userForm,

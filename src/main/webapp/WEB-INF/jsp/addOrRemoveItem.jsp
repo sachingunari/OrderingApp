@@ -52,11 +52,14 @@ th, td {
 </style>
 <body>
 <ul>
-  <li><a class="active" href="#home">Home</a></li>
-  <li><a href="#news">News</a></li>
+  <li><a class="active" href="adminHome">Home</a></li>
   <li class="dropdown">
     <a href="javascript:void(0)" class="dropbtn" onclick="myFunction()">Menu Category</a>
   </li>
+   <li><a href = "logout" style="
+    border-left-width: 100px;
+    margin-left: 800px;
+">Logout</a></li>
 </ul>
 
 <div class ="row">

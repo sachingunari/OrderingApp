@@ -111,11 +111,13 @@ public class UserController {
 	  }
 	  
 	  @RequestMapping(value = "/addProduct", method = RequestMethod.POST)
-	  public String addProduct(@ModelAttribute Item item,BindingResult result,@ModelAttribute("order")  List<Item> order, Map<String, Object> model,@RequestParam int quantity,Model models) {
+	  public String addProduct(@ModelAttribute Item item,BindingResult result,@ModelAttribute("order")  List<Item> order, Map<String, Object> model,@RequestParam int quantity,@RequestParam int cooking_Time,Model models) {
 		  
 		  int total=0;
+		  int totaltime=0;
 		  boolean b =false;
 		  item.setQuantity(quantity);
+		  item.setCooking_Time(cooking_Time);
 		  for(Item i:order){
 			  
 			if(i.getId()== item.getId()){				
@@ -132,9 +134,11 @@ public class UserController {
 	    
 		  	for (Item i: order){
 		    	total+= i.getCost()*i.getQuantity();
+		    	//totaltime+=i.getCooking_Time();
 		    }
 		    
 		    models.addAttribute("totals",total);
+		    models.addAttribute("totalstime",totaltime);
 
 
 
@@ -190,12 +194,19 @@ public class UserController {
 	    return "customerHome";
 	}
 	
+	@RequestMapping(value = "/checkout", method = RequestMethod.GET)
+	public String showRegistrationForm( @Valid @ModelAttribute("user") User userForm,Model model) {
+	   // User user = new User();
+	   // model.addAttribute("user", user);
+	    return "checkout";
+	}
+	
+	
 	@RequestMapping(value = "/placeorder",  method = RequestMethod.POST)
-    public String doLogins(@ModelAttribute("orders")  ArrayList<Item> orders,BindingResult result,@RequestParam String dates,@RequestParam String times,@RequestParam String total, Model model,HttpSession session,HttpServletRequest request) {
+    public String doLogins(@ModelAttribute("orders")  ArrayList<Item> orders,BindingResult result,@RequestParam String dates,@RequestParam String times,@RequestParam String total,@RequestParam int totaltime, Model model,HttpSession session,HttpServletRequest request) {
 		
 	
 		
-		System.out.print(total);
 
 		Orders ord=new Orders();
 		int ord_Id=rand.nextInt(10000);
@@ -203,41 +214,35 @@ public class UserController {
 		String fulfillment_Starttime = null;
 		String pickup_Time = null;
 		String ready_Time = null;
+	
 		
 		List os=oservice.getAllOrders();
 		
 		
 		
-		
+		System.out.println("");
 		
 		for(Item i:order){
-			
+			ord.setOrders_status("in Queue");
 			ord.setOrder_Id(ord_Id);
 			ord.setItem_Quantity(i.getQuantity());
 			ord.setItem_Id(i.getId());
 			//ord.setOrder_Id(12);
-			ord.setFulfillment_Starttime(fulfillment_Starttime);
-			ord.setPickup_Time(pickup_Time);
-			ord.setReady_Time(ready_Time);
-			
-			
-		
-			oservice.add(ord);
-		
-			
+			ord.setFulfillment_Starttime(dates+" "+times+":00");
+			ord.setPickup_Time(dates+" "+times+":00");
+			ord.setReady_Time(dates+" "+times+":00");			
 
 		}	
+		
+		oservice.add(ord);
+		session.setAttribute("order", null);
+		
+		
 	
-			return "customerHome";
+			return "checkout";
 		}
 
 
 
-	
-	
-	
-	
-	
-	 
 	   
 }

@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<title>OrderStatus</title>
+<title>Admin Management</title>
 </head>
 <style>
 ul {
@@ -52,43 +52,20 @@ th, td {
 </style>
 <body>
 <ul>
-  <li><a class="active" href="adminHome">Home</a></li>
-   <li><a href = "logout" style="
-    border-left-width: 100px;
-    margin-left: 800px;
-">Logout</a></li>
- 
+  <li><a class="active" href="loginCustomer">Home</a></li>
+  <li class="dropdown">
+    <a href="javascript:void(0)" class="dropbtn" onclick="myFunction()">Menu Category</a>
+  </li>
 </ul>
 
 <div class ="row">
 	<div align="center">
-		<h3>Order Details</h3>
+		<h3>Thank you for your order !</h3>
 	</div>
 </div>
 
-<div class="container" >
-    <div class="row" align="center">
-            <div class="col-lg-12">
-                 <table style = "width:70%">
-							<th>Order Id</th>
-							<th>Item Id</th>
-							<th>Item Quantity</th>
-							<th>Pick Up Time</th>
-							<th>Order Status</th>
-							
-					<c:forEach items="${orderList}" var="order">
-						<tr>
-							<td>${order.order_Id}</td>
-							<td>${order.item_Id}</td>
-							<td>${order.item_Quantity}</td>
-							<td>${order.pickup_Time}</td>
-							<td>${order.orders_status}</td>
-							
-						</tr>
-					</c:forEach>
-				</table>
-			</div>
-	</div>
-</div>
+
 </body>
 </html>
+
+

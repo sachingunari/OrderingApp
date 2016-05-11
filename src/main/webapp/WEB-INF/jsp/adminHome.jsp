@@ -67,7 +67,7 @@ table {
 <body >
 
 <ul>
-  <li><a class="active" href="/adminHome">Home</a></li>
+  <li><a class="active" href="#">Home</a></li>
   <li class="dropdown">
     <a href="javascript:void(0)" class="dropbtn" onclick="myFunction()">Admin Console</a>
     <div class="dropdown-content" id="myDropdown">
@@ -75,6 +75,10 @@ table {
       <a href="orders" id ="viewOrders">View Orders</a>
      </div>
   </li>
+   <li><a href = "logout" style="
+    border-left-width: 100px;
+    margin-left: 800px;
+">Logout</a></li>
 </ul>
 <script>
 /* When the user clicks on the button, 
