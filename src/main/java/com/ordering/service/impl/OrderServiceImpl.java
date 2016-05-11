@@ -7,7 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.ordering.dao.OrderDao;
 import com.ordering.dao.UserDao;
-import com.ordering.model.Order;
+import com.ordering.model.Orders;
 import com.ordering.model.User;
 import com.ordering.service.OrderService;
 
@@ -17,14 +17,14 @@ public class OrderServiceImpl implements OrderService {
 	private OrderDao orderDao;
 
 	@Transactional
-	public void add(Order order) {
+	public void add(Orders order) {
 		// TODO Auto-generated method stub
 		orderDao.add(order);
 		
 	}
 
 	@Transactional
-	public void edit(Order order) {
+	public void edit(Orders order) {
 		// TODO Auto-generated method stub
 		orderDao.edit(order);
 		
@@ -37,7 +37,7 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Transactional
-	public Order getUser(int OrderId) {
+	public Orders getUser(int OrderId) {
 		// TODO Auto-generated method stub
 		return orderDao.getOrder(OrderId);
 	}

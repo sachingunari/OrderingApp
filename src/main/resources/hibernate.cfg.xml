@@ -8,6 +8,6 @@
         <mapping class="com.ordering.model.User" />
         <mapping class="com.ordering.model.Item" />
         <mapping class="com.ordering.model.Category" />
-        
+        <mapping class="com.ordering.model.Orders" />
     </session-factory>         
 </hibernate-configuration>

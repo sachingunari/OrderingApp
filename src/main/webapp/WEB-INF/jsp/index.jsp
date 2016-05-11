@@ -19,8 +19,9 @@
 <style>
 html,
 body {
-    height: 100%;
-}
+        background: #3CC;        
+		background-image : url("file:///C:/Users/Saurabh/Desktop/study/cmpe275/Test_files/123.jfif");
+    }
 
 body {
     padding-top: 50px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */

@@ -24,6 +24,8 @@
    </bean>
    <bean id="categoryService" class="com.ordering.service.impl.CategoryServiceImpl">
    </bean>
+   <bean id="OrderService" class="com.ordering.service.impl.OrderServiceImpl">
+   </bean>
 		
 
 	<bean id="propertyConfigurer"

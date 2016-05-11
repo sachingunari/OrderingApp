@@ -15,7 +15,7 @@
 <div align="center">
         <h2> Add Item </h2>
         <table border="0" width="90%">
-        <form:form action="a" commandName="item">
+        <form:form action="addremove" commandName="item">
                 <tr>
                     <td align="left" width="20%">Item Id: </td>
                     <td align="left" width="40%"><form:input path="Id" size="30"/></td>

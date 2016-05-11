@@ -44,7 +44,7 @@ public class LoginController {
 		 
 		 if (user!=null && userForm.getPassword().equals(user.getPassword())&&user.isEnabled()==true){
 			 
-			 return "user";
+			 return "adminHome";
 			 
 		 }
 		 else

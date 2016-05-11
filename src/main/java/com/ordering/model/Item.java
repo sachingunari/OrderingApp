@@ -2,8 +2,6 @@ package com.ordering.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
@@ -15,7 +13,7 @@ public class Item {
 		super();
 	}
 	
-	public Item(int id, String name, int category_Id, int cooking_Time, int cost, String pic_Url, int calories) {
+	public Item(int id, String name, int quantity, int category_Id, int cooking_Time, int cost, String pic_Url, int calories) {
 		super();
 		this.Id = id;
 		this.name = name;
@@ -24,6 +22,7 @@ public class Item {
 		this.cost = cost;
 		this.pic_Url = pic_Url;
 		this.calories = calories;
+		this.quantity=quantity;
 	}
 
 
@@ -33,6 +32,10 @@ public class Item {
 	
 	@Column
 	private String name;
+	
+	@Column
+	private int quantity;
+	
 	
 	@Column
 	private int category_Id;
@@ -49,6 +52,15 @@ public class Item {
 	@Column
 	private int calories;
 
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+	
 	public int getId() {
 		return Id;
 	}

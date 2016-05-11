@@ -31,7 +31,7 @@ public class AdminController {
 	private ItemService itemservice;
 	@Autowired
 	private CategoryService categoryservice;
-	@RequestMapping(value = "/a", method = RequestMethod.GET)
+	@RequestMapping(value = "/addremove", method = RequestMethod.GET)
 //	@RequestMapping(value = "/signup", params={ "username" , "password"}, method = RequestMethod.POST)   
     public String doLogin(Map<String, Object> model) {
 	 	
@@ -50,7 +50,7 @@ public class AdminController {
         return "addOrRemoveItem";
     }
 	
-	@RequestMapping(value = "/a", params={ "name" , "cooking_Time", "cost", "pic_Url", "calories"}, method = RequestMethod.POST)
+	@RequestMapping(value = "/addremove", params={ "name" , "cooking_Time", "cost", "pic_Url", "calories"}, method = RequestMethod.POST)
     public String doLogin(@Valid @ModelAttribute("user") Item itemForm,
             BindingResult result, @RequestParam String action,@RequestParam("Category") String category, Map<String, Object> model) {
 	 	//itemservice = new ItemServiceImpl();
