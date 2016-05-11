@@ -123,17 +123,7 @@ table {
 					<td> <input value="${totals}" style="display :none" name="total"></input></td>
 					
 					<td>
-					<div id="datetimepicker" class="input-append date">
-						<style scoped>
-						
-							@import "http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css";
-							@import	"http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css";
-						</style>	
-				      <input type="text" name="date"></input>
-				      <span class="add-on">
-				        <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
-				      </span>
-				    </div>
+					<input type="datetime-local" name="date"/>
                     </td>
 					        									
 					<td> <input type="submit" value="placeorderz"></input></td> 
@@ -281,24 +271,6 @@ table {
 	</table>
 </div>
 
-<script type="text/javascript"
-     src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js">
-    </script> 
-    <script type="text/javascript"
-     src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js">
-    </script>
-    <script type="text/javascript"
-     src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js">
-    </script>
-    <script type="text/javascript"
-     src="./js/bootstrap-datetimepicker.en.js">
-    </script>
-    <script type="text/javascript">
-      $('#datetimepicker').datetimepicker({
-        format: 'dd/MM/yyyy hh:mm:ss',
-        language: 'pt-BR'
-      });
-</script>
 <script>
 /* When the user clicks on the button, 
 toggle between hiding and showing the dropdown content */
