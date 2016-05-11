@@ -67,12 +67,13 @@ table {
 <body >
 
 <ul>
-  <li><a class="active" href="/CRUDWebAppMavenized">Home</a></li>
+  <li><a class="active" href="/adminHome">Home</a></li>
   <li class="dropdown">
     <a href="javascript:void(0)" class="dropbtn" onclick="myFunction()">Admin Console</a>
     <div class="dropdown-content" id="myDropdown">
       <a href="addremove" id ="addremove">Add or Remove</a>
-    </div>
+      <a href="orders" id ="viewOrders">View Orders</a>
+     </div>
   </li>
 </ul>
 <script>

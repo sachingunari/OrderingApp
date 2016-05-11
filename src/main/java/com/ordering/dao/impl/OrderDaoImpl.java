@@ -46,7 +46,7 @@ public class OrderDaoImpl implements OrderDao {
 	@Override
 	public List getAllOrders() {
 		// TODO Auto-generated method stub
-		return session.getCurrentSession().createQuery("from Order").list();
+		return session.getCurrentSession().createQuery("from Orders").list();
 	}
 
 	

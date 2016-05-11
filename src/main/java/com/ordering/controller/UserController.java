@@ -191,7 +191,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/placeorder",  method = RequestMethod.POST)
-    public String doLogins(@ModelAttribute("orders")  ArrayList<Item> orders,BindingResult result,@RequestParam String date,@RequestParam String total, Model model,HttpSession session,HttpServletRequest request) {
+    public String doLogins(@ModelAttribute("orders")  ArrayList<Item> orders,BindingResult result,@RequestParam String dates,@RequestParam String times,@RequestParam String total, Model model,HttpSession session,HttpServletRequest request) {
 		
 	
 		
@@ -200,23 +200,31 @@ public class UserController {
 		Orders ord=new Orders();
 		int ord_Id=rand.nextInt(10000);
 		
+		String fulfillment_Starttime = null;
+		String pickup_Time = null;
+		String ready_Time = null;
+		
+		List os=oservice.getAllOrders();
+		
+		
+		
+		
+		
 		for(Item i:order){
 			
-			System.out.println("ROSSSSSSST");
 			ord.setOrder_Id(ord_Id);
 			ord.setItem_Quantity(i.getQuantity());
 			ord.setItem_Id(i.getId());
 			//ord.setOrder_Id(12);
-			ord.setFulfillment_Starttime("2013-08-30 19:05:00");
-			ord.setPickup_Time("2013-08-30 19:05:00");
-			ord.setReady_Time("2013-08-30 19:05:00");
-			try{
+			ord.setFulfillment_Starttime(fulfillment_Starttime);
+			ord.setPickup_Time(pickup_Time);
+			ord.setReady_Time(ready_Time);
+			
+			
+		
 			oservice.add(ord);
-			}
-			catch(Exception e)
-			{
-				System.out.println(e.getCause());
-			}
+		
+			
 
 		}	
 	

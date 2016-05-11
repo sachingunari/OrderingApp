@@ -11,7 +11,7 @@ public class Orders {
 	public Orders() {
 		super();
 	}
-	public Orders(int order_Id, int user_Id, int item_Id, int item_Quantity,String fulfillment_Starttime,String pickup_Time,String ready_Time) {
+	public Orders(int order_Id, int user_Id, int item_Id, int item_Quantity,String fulfillment_Starttime,String pickup_Time,String ready_Time,String orders_status) {
 		super();
 		this.order_Id = order_Id;
 		this.user_Id = user_Id;
@@ -20,6 +20,7 @@ public class Orders {
 		this.fulfillment_Starttime=fulfillment_Starttime;
 		this.pickup_Time=pickup_Time;
 		this.ready_Time=ready_Time;
+		this.orders_status = orders_status;
 	}
 	
 	@Id
@@ -37,6 +38,9 @@ public class Orders {
 	private String fulfillment_Starttime;
 	@Column
 	private String pickup_Time;
+	
+	@Column
+	private String orders_status;
 	
 	
 	public String getReady_Time() {
@@ -81,9 +85,16 @@ public class Orders {
 	public void setItem_Quantity(int item_Quantity) {
 		this.item_Quantity = item_Quantity;
 	}
-	
+	public String getOrders_status() {
+		return orders_status;
+	}
+	public void setOrders_status(String orders_status) {
+		this.orders_status = orders_status;
+	}
 	
 }
+
+
 
 
 

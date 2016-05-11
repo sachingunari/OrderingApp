@@ -110,12 +110,7 @@ table {
 						<td>${totals}</td>						
 					</tr>
 
-			</table>
-</div>
-
-
-
-		
+			</table>		
 
 			<form:form method="post"  action="placeorder" >
 					<tr>
@@ -123,28 +118,37 @@ table {
 					<td> <input value="${totals}" style="display :none" name="total"></input></td>
 					
 					<td>
-					<input type="datetime-local" name="date" min="Date()" max= "Date()+30" />
-                    </td>
-					        									
+		<input name="times" type=time min="06:00" max="21:00" step="01" value="00:00">
+		  </td>
+		  <td>
+			<%  java.util.Date date= new java.util.Date();
+            		java.util.Calendar cal = java.util.Calendar.getInstance();
+cal.setTime(date);
+
+int maxmonth = cal.get(java.util.Calendar.MONTH);
+maxmonth = maxmonth +2;
+int maxyear = cal.get(java.util.Calendar.YEAR);
+maxyear = maxyear +0;
+int maxday = cal.get(java.util.Calendar.DAY_OF_MONTH);
+maxday = maxday +0;
+int minmonth = cal.get(java.util.Calendar.MONTH);
+minmonth = minmonth +1;
+int minyear = cal.get(java.util.Calendar.YEAR);
+minyear = minyear +0;
+int minday = cal.get(java.util.Calendar.DAY_OF_MONTH);
+minday = minday +0;
+
+System.out.println("month: " +maxmonth +" day: "+maxday+" maxyear: "+maxyear);
+%>
+<input type="date" name="bday" max="<%=maxyear %>-0<%=maxmonth %>-<%=maxday %>" min="<%=minyear %>-0<%=minmonth %>-<%=minday %>"><br><br>
+			</td>	
+										
+                  					        									
 					<td> <input type="submit" value="placeorderz"></input></td> 
 					</tr>
 			</form:form>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+</div>
 <div id = "first">
 	<h3>
 		<p>Click on the "Menu Category" link to see the menu.</p>

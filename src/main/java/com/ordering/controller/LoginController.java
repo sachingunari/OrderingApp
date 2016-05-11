@@ -51,7 +51,16 @@ public class LoginController {
 		request.getSession().invalidate();
         return "index";
     }
-	
+	@RequestMapping(value = "/adminHome", method = RequestMethod.GET)
+    public String adminHome(Map<String, Object> model,HttpSession session,HttpServletRequest request) {
+
+		User user = new User();
+        model.put("user", user);
+        return "adminHome";
+    }
+
+
+
 	
 	 @RequestMapping(value = "/loginAdmin", params={ "username" , "password"}, method = RequestMethod.POST)
 	    public String doLogin(@Valid @ModelAttribute("user") User userForm,

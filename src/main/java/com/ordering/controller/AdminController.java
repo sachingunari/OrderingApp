@@ -15,14 +15,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ordering.dao.ItemDao;
-import com.ordering.dao.UserDao;
 import com.ordering.model.Category;
 import com.ordering.model.Item;
-import com.ordering.model.User;
 import com.ordering.service.CategoryService;
 import com.ordering.service.ItemService;
-//import com.ordering.service.UserService;
-import com.ordering.service.impl.ItemServiceImpl;
+import com.ordering.service.OrderService;
 
 @Controller
 public class AdminController {
@@ -32,6 +29,8 @@ public class AdminController {
 	private ItemService itemservice;
 	@Autowired
 	private CategoryService categoryservice;
+	@Autowired
+	private OrderService orderservice;
 	
 	@RequestMapping(value = "/addremove", method = RequestMethod.GET)
     public String doLogin(Map<String, Object> model,HttpServletRequest request) {
@@ -104,9 +103,10 @@ public class AdminController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println(e.getCause());
-			System.out.println(e.getMessage());
-			
+			System.out.println(e.getMessage());			
 		}
+		
+		
 		ArrayList tempList = new ArrayList<>();
 		tempList =(ArrayList) itemservice.getAllItems();
 		model.put("studentList", tempList);
@@ -117,5 +117,21 @@ public class AdminController {
 		return "addOrRemoveItem";
 
 	}
+	
+	@RequestMapping(value = "/orders", method = RequestMethod.GET)
+    public String getOrder(Map<String, Object> model,HttpServletRequest request) {
+		if(!request.getSession().getAttribute("accessLevel").toString().equals("0")){
+			 
+			return("index"); 
+			
+		}
+		ArrayList orderList = new ArrayList<>();
+		orderList =(ArrayList) orderservice.getAllOrders();
+		model.put("orderList", orderList);
+		  
+        return "viewOrders";
+    }
+
+	
 	
 }
