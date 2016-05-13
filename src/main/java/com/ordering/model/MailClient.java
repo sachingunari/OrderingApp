@@ -52,11 +52,11 @@ public class MailClient {
 	         InternetAddress.parse(to));
 
 	         // Set Subject: header field
-	         message.setSubject("Testing Subject");
+	         message.setSubject("Activate your Login");
 
 	         // Now set the actual message
-	         message.setText("http://localhost:8080/CRUDWebAppMavenized/enable/"+usernameurl+"/"+Token);
-
+	        // message.setText("Please click on the link to activate account:    http://localhost:8080/CRUDWebAppMavenized/enable/"+usernameurl+"/"+Token+"   or     ");
+	         message.setText("Greetings from TakeOut Restaurant. Please activate your account by clicking on link :http://localhost:8080/CRUDWebAppMavenized/enable/"+usernameurl+"/"+Token + " OR Please enter the token on the Verification Page : TOKEN CODE: "+Token);
 	         // Send message
 	         Transport.send(message);
 

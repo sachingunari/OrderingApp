@@ -134,7 +134,7 @@ public class UserController {
 	    
 		  	for (Item i: order){
 		    	total+= i.getCost()*i.getQuantity();
-		    	//totaltime+=i.getCooking_Time();
+		    	totaltime+=i.getCooking_Time();
 		    }
 		    
 		    models.addAttribute("totals",total);

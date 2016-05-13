@@ -13,6 +13,10 @@ ul {
     overflow: hidden;
     background-color: #333;
 }
+body {
+        background: #3CC;        
+		background-image : url("http://indospartans.com/uploads/tk.jpg");
+    }
 
 li {
     float: left;

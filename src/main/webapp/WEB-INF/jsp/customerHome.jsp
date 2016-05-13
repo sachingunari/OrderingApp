@@ -29,7 +29,10 @@ li a, .dropbtn {
 li a:hover, .dropdown:hover .dropbtn {
     background-color: red;
 }
-
+body {
+        background: #3CC;        
+		background-image : url("http://indospartans.com/uploads/tk.jpg");
+    }
 li.dropdown {
     display: inline-block;
 }
@@ -145,7 +148,7 @@ System.out.println("month: " +maxmonth +" day: "+maxday+" maxyear: "+maxyear);
 			</td>	
 										
                   					        									
-					<td> <input type="submit" value="placeorderz"></input></td> 
+					<td> <input type="submit" value="PLACEORDER"></input></td> 
 					</tr>
 			</form:form>
 

@@ -24,13 +24,13 @@
 
 
 <body>                    
-<body background="file:///C:/Users/Saurabh/git/OrderingApp/src/main/webapp/WEB-INF/Images/tk.jpg">
+<body background="http://indospartans.com/uploads/tk.jpg">
 
 
     <div align="center">
         <h2>Please check your email inbox and enter the token below</h2>
         <table border="0" width="90%">
-        <form:form action="tokenverify" commandName="tokenverify">
+        <form:form action="tokenverify" method="post" commandName="tokenverify">
                 <tr>					
 					Token:
                     <input type="text" name="token" value="" required="required"> 

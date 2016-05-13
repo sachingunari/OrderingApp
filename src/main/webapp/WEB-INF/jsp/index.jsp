@@ -20,7 +20,7 @@
 html,
 body {
         background: #3CC;        
-		background-image : url("file:///C:/Users/Saurabh/Desktop/study/cmpe275/Test_files/123.jfif");
+		background-image : url("http://indospartans.com/uploads/tk.jpg");
     }
 
 body {
