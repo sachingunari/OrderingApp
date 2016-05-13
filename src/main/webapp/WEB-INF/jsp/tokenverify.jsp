@@ -25,8 +25,7 @@
 
 <body>                    
 <body background="http://indospartans.com/uploads/tk.jpg">
-
-
+ 
     <div align="center">
         <h2>Please check your email inbox and enter the token below</h2>
         <table border="0" width="90%">
