@@ -32,8 +32,8 @@
         <table border="0" width="90%">
         <form:form action="tokenverify" commandName="tokenverify">
                 <tr>					
-					Token:
-                    <input type="text" name="token" value="" required="required"> 
+					<h1>Token:</h1>
+                    <input type="text" name=userId id ="userId" value="" > 
                 </tr>
                     <br>
                     <br>
