@@ -38,11 +38,18 @@ public class Orders {
 	private String fulfillment_Starttime;
 	@Column
 	private String pickup_Time;
-	
+	@Column
+	private int cooking_Times=0;
 	@Column
 	private String orders_status;
 	
 	
+	public int getCooking_Times() {
+		return cooking_Times;
+	}
+	public void setCooking_Times(int cooking_Times) {
+		this.cooking_Times = cooking_Times;
+	}
 	public String getReady_Time() {
 		return ready_Time;
 	}

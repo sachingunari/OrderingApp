@@ -187,7 +187,7 @@ public class UserController {
 		return "user";
 	}
 	
-	@RequestMapping(value = "/placeorderz", method = RequestMethod.GET)
+	@RequestMapping(value = "/placeorder", method = RequestMethod.GET)
 	public String showRegistrationForms( @Valid @ModelAttribute("user") User userForm,Model model) {
 	   // User user = new User();
 	   // model.addAttribute("user", user);
@@ -214,7 +214,6 @@ public class UserController {
 		String fulfillment_Starttime = null;
 		String pickup_Time = null;
 		String ready_Time = null;
-	
 		
 		List os=oservice.getAllOrders();
 		
@@ -230,12 +229,16 @@ public class UserController {
 			//ord.setOrder_Id(12);
 			ord.setFulfillment_Starttime(dates+" "+times+":00");
 			ord.setPickup_Time(dates+" "+times+":00");
-			ord.setReady_Time(dates+" "+times+":00");			
+			ord.setReady_Time(dates+" "+times+":00");
+			ord.setCooking_Times(i.getCooking_Time()*i.getQuantity());
+			oservice.add(ord);
+			System.out.println(i.toString());
 
 		}	
 		
 		oservice.add(ord);
 		session.setAttribute("order", null);
+		order.clear();
 		
 		
 	
