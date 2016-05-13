@@ -226,7 +226,6 @@ public class UserController {
 			ord.setOrder_Id(ord_Id);
 			ord.setItem_Quantity(i.getQuantity());
 			ord.setItem_Id(i.getId());
-			//ord.setOrder_Id(12);
 			ord.setFulfillment_Starttime(dates+" "+times+":00");
 			ord.setPickup_Time(dates+" "+times+":00");
 			ord.setReady_Time(dates+" "+times+":00");
@@ -236,7 +235,6 @@ public class UserController {
 
 		}	
 		
-		oservice.add(ord);
 		session.setAttribute("order", null);
 		order.clear();
 		
