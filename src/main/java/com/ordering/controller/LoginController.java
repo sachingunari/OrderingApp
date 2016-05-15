@@ -49,7 +49,8 @@ public class LoginController {
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
     public String logout(Map<String, Object> model,HttpSession session,HttpServletRequest request) {
 		request.getSession().invalidate();
-        return "index";
+		request.getSession().setAttribute("order", null);
+         return "index";
     }
 	@RequestMapping(value = "/adminHome", method = RequestMethod.GET)
     public String adminHome(Map<String, Object> model,HttpSession session,HttpServletRequest request) {
@@ -71,6 +72,7 @@ public class LoginController {
 			 
 			 request.getSession().setAttribute("userName",userForm.getUsername());
 			 request.getSession().setAttribute("accessLevel",user.getAccessLevel());
+			 request.getSession().setAttribute("userid",user.getUserId());
 			 
 			 return "adminHome";
 		 }

@@ -1,6 +1,7 @@
 package com.ordering.controller;
 
 import java.util.ArrayList;
+import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -72,7 +73,20 @@ public class UserController {
     public String doLogin(@Valid @ModelAttribute("user") User userForm,BindingResult result, Map<String, Object> model,HttpSession session,HttpServletRequest request) {
 		//request.getSession().setAttribute("userName",userForm.getUsername());
 		//request.getSession().setAttribute("accessLevel",userForm.getAccessLevel());
-
+		
+		if(result.hasErrors())
+		{
+			return "loginCustomer";
+		}
+		User user = userService.getUser(userForm.getUsername());
+		ModelAndView modelandview = new ModelAndView();
+		//User u =userService.getUser(user.getUsername()); 
+		if(user== null)
+		{
+			model.put("error", "Wrong Credentials");
+			return "loginCustomer";
+		}
+		
 		Item item = new Item();
         Category cat=new Category();
         model.put("item", item);
@@ -86,14 +100,15 @@ public class UserController {
 		model.put("categoryList", categoryList);
 		
 			
-		User user = userService.getUser(userForm.getUsername());
+				
 	 
 		if(user!=null && userForm.getPassword().equals(user.getPassword())&&user.isEnabled()==true){
 			session = request.getSession();
 			session.setAttribute("username",userForm.getUsername());
 			session.setAttribute("accessLevel", userForm.getAccessLevel());
 			session.setAttribute("order", order);
-
+			request.getSession().setAttribute("userid",user.getUserId());
+			 
 			return "customerHome";
 		}
 		else{
@@ -187,7 +202,7 @@ public class UserController {
 		return "user";
 	}
 	
-	@RequestMapping(value = "/placeorder", method = RequestMethod.GET)
+	@RequestMapping(value = "/placeorderz", method = RequestMethod.GET)
 	public String showRegistrationForms( @Valid @ModelAttribute("user") User userForm,Model model) {
 	   // User user = new User();
 	   // model.addAttribute("user", user);
@@ -214,29 +229,30 @@ public class UserController {
 		String fulfillment_Starttime = null;
 		String pickup_Time = null;
 		String ready_Time = null;
+	
 		
 		List os=oservice.getAllOrders();
 		
 		
 		
 		System.out.println("");
-		
+		int userid = Integer.parseInt(session.getAttribute("userid").toString());
 		for(Item i:order){
 			ord.setOrders_status("in Queue");
 			ord.setOrder_Id(ord_Id);
 			ord.setItem_Quantity(i.getQuantity());
 			ord.setItem_Id(i.getId());
+			//ord.setOrder_Id(12);
 			ord.setFulfillment_Starttime(dates+" "+times+":00");
 			ord.setPickup_Time(dates+" "+times+":00");
-			ord.setReady_Time(dates+" "+times+":00");
-			ord.setCooking_Times(i.getCooking_Time()*i.getQuantity());
+			ord.setReady_Time(dates+" "+times+":00");			
+			ord.setUser_Id(userid);
 			oservice.add(ord);
-			System.out.println(i.toString());
 
 		}	
 		
+	
 		session.setAttribute("order", null);
-		order.clear();
 		
 		
 	

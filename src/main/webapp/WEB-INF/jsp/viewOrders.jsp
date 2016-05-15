@@ -1,3 +1,6 @@
+<%@page import="org.springframework.ui.Model"%>
+<%@page import="com.ordering.model.Orders"%>
+<%@ page import ="java.util.*" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
@@ -75,17 +78,42 @@ th, td {
 							<th>Item Quantity</th>
 							<th>Pick Up Time</th>
 							<th>Order Status</th>
+							<%int orderid =0;
+								String orderidstring ="";
+								System.out.println();
+								Object param = request.getAttribute("orderList");
+								System.out.println(param.toString());
+								//
+								ArrayList<Orders> orderList = new ArrayList<>();
+								orderList =(ArrayList)request.getAttribute("orderList");
+						
+							%>
+							<% 	int id =  0;
+							String orderidstring1 = "";
+							for(Orders o :orderList){
+								 	if(o.getOrder_Id() == id){
+										System.out.println("Id1: " +o.getOrder_Id() + ". id in string: " +orderidstring1);
+										orderidstring1 = "";
+									} else{
+										orderidstring1 = ""+o.getOrder_Id();
+										System.out.println("Id2: " +o.getOrder_Id() + ". id in string: " +orderidstring1);
+										
+									}
+									
+								%>
+            		<tr>      
+                			<td><%=orderidstring1 %></td>
+							<td><%=o.getItem_Id() %></td>
+							<td><%=o.getItem_Quantity()%></td>
+							<td> <%=o.getPickup_Time()%> </td>
+							<td> <%=o.getOrders_status()%> </td>
 							
-					<c:forEach items="${orderList}" var="order">
-						<tr>
-							<td>${order.order_Id}</td>
-							<td>${order.item_Id}</td>
-							<td>${order.item_Quantity}</td>
-							<td>${order.pickup_Time}</td>
-							<td>${order.orders_status}</td>
-							
-						</tr>
-					</c:forEach>
+            		</tr>
+        <%id =  o.getOrder_Id()  ;
+    	orderidstring1 = "";
+		
+		 } %>
+					
 				</table>
 			</div>
 	</div>
