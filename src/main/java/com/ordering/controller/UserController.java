@@ -303,10 +303,10 @@ public class UserController {
 		System.out.println("");
 		String orderRelatedMessage = "";
 		int userid = Integer.parseInt(session.getAttribute("userid").toString());
-		int count =0;
+		int counts =0;
 		for(Item i:order){
-			count++;
-			orderRelatedMessage += "\n \n"+ count +": ";
+			counts++;
+			orderRelatedMessage += "\n \n"+ counts +": ";
 			ord.setOrders_status("in Queue");
 			ord.setOrder_Id(ord_Id);
 			orderRelatedMessage += "\n Order_id: "+ord_Id;
@@ -356,6 +356,7 @@ public class UserController {
 		Orders ord=new Orders();
 		OrdersId ords=new OrdersId();
 		int ord_Id=rand.nextInt(10000);
+		String orderRelatedMessage = "";
 		
 		Calendar fulfillment_Starttime = Calendar.getInstance();
 		Calendar pickup_Time = Calendar.getInstance();
@@ -406,7 +407,7 @@ public class UserController {
 		List<Orders> os=oservice.getAllOrders();
 		
 	
-		for (int j=0;j<10;j++){
+		for (int j=0;j<60;j++){
 			
 			count=0;
 			found=true;
@@ -450,7 +451,7 @@ public class UserController {
 						}
 						
 			if (found==true && (fulfillment_Starttime.after(day_Start_Time))){  //||fulfillment_Starttime.after(day_Start_Time) )){
-				
+				int counts =0;
 				for(Item i:order){
 					ord.setOrders_status("in Queue");
 					ords.setItem_Id(i.getId());
@@ -463,10 +464,26 @@ public class UserController {
 					ord.setCooking_Times(cooking_Time);
 					ord.setOrdersId(ords);
 					oservice.add(ord);
-					System.out.println(i.toString());
+				
+					
+					orderRelatedMessage += "\n \n"+ counts +": ";
+					orderRelatedMessage += "\n Order_id: "+ord_Id;
+					orderRelatedMessage += "\n Order_quantity: "+i.getQuantity();
+					orderRelatedMessage += "\n Item_id: "+i.getId();
+					orderRelatedMessage += "\n Order_fulfillment time: "+sdf.format(fulfillment_Starttime.getTime());
+					orderRelatedMessage += "\n Pickup time: "+sdf.format(pickup_Time.getTime());
+					orderRelatedMessage += "\n Ready time: "+sdf.format(ready_Time.getTime());
+					orderRelatedMessage += "\n userid: "+userid;
+					
+					
+					
+					
+					
 
 				}	
-				
+				String from =request.getSession().getAttribute("username").toString();
+				System.out.println(from);
+				mailclient.sendMailWithOrderDetails(from,"Restuarant@SJSU275.edu", orderRelatedMessage);
 				session.setAttribute("order", null);
 				order.clear();
 				found=true;
