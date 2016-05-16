@@ -91,25 +91,25 @@ th, td {
 							<% 	int id =  0;
 							String orderidstring1 = "";
 							for(Orders o :orderList){
-								 	if(o.getOrder_Id() == id){
-										System.out.println("Id1: " +o.getOrder_Id() + ". id in string: " +orderidstring1);
+								 	if(o.getOrdersId().getOrder_Id() == id){
+										System.out.println("Id1: " +o.getOrdersId().getOrder_Id() + ". id in string: " +orderidstring1);
 										orderidstring1 = "";
 									} else{
-										orderidstring1 = ""+o.getOrder_Id();
-										System.out.println("Id2: " +o.getOrder_Id() + ". id in string: " +orderidstring1);
+										orderidstring1 = ""+o.getOrdersId().getOrder_Id();
+										System.out.println("Id2: " +o.getOrdersId().getOrder_Id() + ". id in string: " +orderidstring1);
 										
 									}
 									
 								%>
             		<tr>      
                 			<td><%=orderidstring1 %></td>
-							<td><%=o.getItem_Id() %></td>
+							<td><%=o.getOrdersId().getItem_Id() %></td>
 							<td><%=o.getItem_Quantity() %></td>
 							<td> <%=o.getPickup_Time()%> </td>
 							<td> <%=o.getOrders_status()%> </td>
 							
             		</tr>
-        <%id =  o.getOrder_Id()  ;
+        <%id =  o.getOrdersId().getOrder_Id();
     	orderidstring1 = "";
 		
 		 } %>
