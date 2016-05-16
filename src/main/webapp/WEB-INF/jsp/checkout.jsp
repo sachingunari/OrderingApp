@@ -60,7 +60,9 @@ th, td {
 
 <div class ="row">
 	<div align="center">
-		<h3>Thank you for your order !</h3>
+		<h3>Thank you for your order ! Your session has been invalidated.</h3>
+		
+		<%session.invalidate(); %>
 	</div>
 </div>
 
