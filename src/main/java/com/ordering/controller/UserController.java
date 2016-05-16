@@ -537,17 +537,16 @@ public class UserController {
 	}
 	
 	
-	@RequestMapping(value = "/cancelOrder", params={ "order_Id"}, method = RequestMethod.POST)
-    public String customerDelete(@Valid  @ModelAttribute("orders") BindingResult result,HttpServletRequest request, @RequestParam String action, Map<String, Object> model) {
+	@RequestMapping(value = "/cancelOrder",method = RequestMethod.POST)
+    public String customerDelete(HttpServletRequest request, @RequestParam String action,@RequestParam int order_Id, Map<String, Object> model) {
 	
-		Orders orders = new Orders();
-		((Model) model).addAttribute("orders", new Orders());
+
 		try {
 			
 			switch(action.toLowerCase()){	//only in Java7 you can put String in switch
 			case "cancel":
-				int order_id = orders.getOrdersId().getOrder_Id();
-				oservice.delete(order_id);
+	
+				oservice.delete(order_Id);
 				Orders newOrders = new Orders();
 				model.put("newOrders", newOrders);
 		        break;
@@ -560,15 +559,10 @@ public class UserController {
 			System.out.println(e.getMessage());			
 		}
 		
-		return "customerOrders";
+		return "customerHome";
 
 	}
 
-	
-	
-	
-	
-	
 
 
 	   
