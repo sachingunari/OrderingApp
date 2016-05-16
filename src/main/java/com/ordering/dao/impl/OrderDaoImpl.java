@@ -2,6 +2,7 @@ package com.ordering.dao.impl;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -48,6 +49,21 @@ public class OrderDaoImpl implements OrderDao {
 		// TODO Auto-generated method stub
 		return session.getCurrentSession().createQuery("from Orders").list();
 	}
+
+	@Override
+	public List<Orders> getCustomerOrder(int user_Id) {
+		// TODO Auto-generated method stub
+		Query query = session.
+			      getCurrentSession().
+			      createQuery("from Orders where user_Id = :user_Id");
+			    query.setParameter("user_Id", user_Id);
+			  
+			    List templist =query.list();
+			    return templist;
+		//return (List)session.getCurrentSession().get(Orders.class, user_Id);
+	}
+
+
 
 	
 	

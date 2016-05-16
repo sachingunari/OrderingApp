@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.ordering.dao.ItemDao;
 import com.ordering.model.Category;
 import com.ordering.model.Item;
+import com.ordering.model.Orders;
 import com.ordering.service.CategoryService;
 import com.ordering.service.ItemService;
 import com.ordering.service.OrderService;
@@ -58,10 +59,6 @@ public class AdminController {
     public String doLogin(@Valid @ModelAttribute("user") Item itemForm,
             BindingResult result,HttpServletRequest request, @RequestParam String action,@RequestParam("Category") String category, Map<String, Object> model) {
 	
-		//if(request.getSession().getAttribute("username") == null)
-		//	return("index");
-		
-		
 		
 		ArrayList categoryList = new ArrayList<>();
 		categoryList =(ArrayList) categoryservice.getAllCategories();
@@ -125,8 +122,18 @@ public class AdminController {
 			return("index"); 
 			
 		}
-		ArrayList orderList = new ArrayList<>();
+		ArrayList<Orders> orderList = new ArrayList<>();
 		orderList =(ArrayList) orderservice.getAllOrders();
+		int orderid =0;
+		for(Orders o :orderList){
+			//System.out.println(o.getOrder_Id());
+			if(orderid ==0){
+				orderid = o.getOrdersId().getOrder_Id();
+				
+			}
+			
+			
+		}
 		model.put("orderList", orderList);
 		  
         return "viewOrders";

@@ -1,6 +1,7 @@
 package com.ordering.model;
 
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -11,11 +12,11 @@ public class Orders {
 	public Orders() {
 		super();
 	}
-	public Orders(int order_Id, int user_Id, int item_Id, int item_Quantity,String fulfillment_Starttime,String pickup_Time,String ready_Time,String orders_status) {
+	public Orders(OrdersId ordersId, int user_Id,  int item_Quantity,String fulfillment_Starttime,String pickup_Time,String ready_Time,String orders_status) {
 		super();
-		this.order_Id = order_Id;
+	
 		this.user_Id = user_Id;
-		this.item_Id = item_Id;
+		this.ordersId =ordersId;
 		this.item_Quantity = item_Quantity;
 		this.fulfillment_Starttime=fulfillment_Starttime;
 		this.pickup_Time=pickup_Time;
@@ -23,13 +24,11 @@ public class Orders {
 		this.orders_status = orders_status;
 	}
 	
-	@Id
-	@Column
-	private int order_Id;
+	@EmbeddedId
+    private OrdersId ordersId;
 	@Column
 	private int user_Id;
-	@Column
-	private int item_Id;	
+		
 	@Column
 	private int item_Quantity;
 	@Column
@@ -68,11 +67,12 @@ public class Orders {
 	public void setPickup_Time(String pickup_Time) {
 		this.pickup_Time = pickup_Time;
 	}
-	public int getOrder_Id() {
-		return order_Id;
+	
+	public OrdersId getOrdersId() {
+		return ordersId;
 	}
-	public void setOrder_Id(int order_Id) {
-		this.order_Id = order_Id;
+	public void setOrdersId(OrdersId ordersId) {
+		this.ordersId = ordersId;
 	}
 	public int getUser_Id() {
 		return user_Id;
@@ -80,12 +80,7 @@ public class Orders {
 	public void setUser_Id(int user_Id) {
 		this.user_Id = user_Id;
 	}
-	public int getItem_Id() {
-		return item_Id;
-	}
-	public void setItem_Id(int item_Id) {
-		this.item_Id = item_Id;
-	}
+	
 	public int getItem_Quantity() {
 		return item_Quantity;
 	}
@@ -100,8 +95,5 @@ public class Orders {
 	}
 	
 }
-
-
-
 
 

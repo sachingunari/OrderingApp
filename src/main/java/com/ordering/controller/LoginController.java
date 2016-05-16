@@ -37,10 +37,7 @@ public class LoginController {
 		if(request.getSession().getAttribute("username") != null){
 			return "customerHome";
 		}
-		
-//		request.getSession().setAttribute("userName",userForm.getUsername());
-	//	request.getSession().setAttribute("accessLevel",userForm.getAccessLevel());
-		 
+ 
         User user = new User();
         model.put("user", user);
         return "loginCustomer";

@@ -116,6 +116,11 @@
     font-family: cursive;
 	
 	}
+    .error {
+    	margin-top:200px;
+        color: white;
+        font-weight: bold;
+    }
 	
 </style>
 <body>
@@ -145,18 +150,29 @@
 	 
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>                 
-                            <form:input path="username" id="email" type="email" name="email"   class="form-control" placeholder="Email Address" />                                       
+                            <form:input path="username" id="email" type="email" name="email"   class="form-control" placeholder="Email Address" />
+                                                     
                         </div>
 
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                            <form:password path="password" class="form-control" name="password" value="" placeholder="Password" />  
+                            <form:password path="password" class="form-control" name="password" value="" placeholder="Password" />
+                            
                   </div>
 
                         <button type="submit" class="btn btn-primary">Login</button>
+                        
+                        <div>
+                        	<form:errors path="username" cssClass="error"/>
+                        	<form:errors path="password" cssClass="error"/>
+                        </div>
                    </form:form>
+                   <div>
+                   		<h4 style="color :white">${error}<h4>
+                   </div>
      
-    </div>
+    			</div>
+    
       </ul>
     </div>
   </div>
@@ -185,3 +201,5 @@
 
 </body>
 </html>
+
+

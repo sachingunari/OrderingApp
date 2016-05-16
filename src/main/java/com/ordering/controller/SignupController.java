@@ -101,6 +101,23 @@ System.out.println(userId);
 	 }
 	 
 	 
+	 @RequestMapping(value = "/sendOrderDetails", params={ "username" , "password"}, method = RequestMethod.POST)
+	    public String sendmailforOrderDetails(@Valid @ModelAttribute("tokenverify") User userForm,
+	            BindingResult result, Map<String, Object> model) {
+		 
+		 User user = new User();
+      user.setUsername(userForm.getUsername());
+      user.setPassword(userForm.getPassword());
+      user.setUserId(rg.nextInt(100000));
+      user.setAccessLevel(1);
+      user.setEnabled(false);
+      
+      userService.add(user);
+      
+      mailclient.sendMail(userForm.getUsername(),"Restuarant@SJSU275.edu",userForm.getUsername(),Integer.toString(user.getUserId()));             
+             
+     return "tokenverify";
+	 }
 	 
 	 
 	 

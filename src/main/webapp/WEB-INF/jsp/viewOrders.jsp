@@ -104,7 +104,7 @@ th, td {
             		<tr>      
                 			<td><%=orderidstring1 %></td>
 							<td><%=o.getItem_Id() %></td>
-							<td><%=o.getItem_Quantity()%></td>
+							<td><%=o.getItem_Quantity() %></td>
 							<td> <%=o.getPickup_Time()%> </td>
 							<td> <%=o.getOrders_status()%> </td>
 							

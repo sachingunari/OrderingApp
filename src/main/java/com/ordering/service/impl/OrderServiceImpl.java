@@ -48,5 +48,13 @@ public class OrderServiceImpl implements OrderService {
 		return orderDao.getAllOrders();
 	}
 
+	@Transactional
+	public List getCustomerOrder(int user_Id) {
+		// TODO Auto-generated method stub
+		return orderDao.getCustomerOrder(user_Id);
+	}
+
+
+
 
 }
