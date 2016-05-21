@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.ordering.dao.OrderDao;
 import com.ordering.model.Orders;
+import com.ordering.model.OrdersId;
 import com.ordering.model.User;
 
 @Repository
@@ -34,9 +35,9 @@ public class OrderDaoImpl implements OrderDao {
 	}
 
 	@Override
-	public void delete(int OrderId) {
+	public void delete(int OrderId,int itemId) {
 		// TODO Auto-generated method stub
-		session.getCurrentSession().delete(getOrder(OrderId));
+		session.getCurrentSession().delete(getOrder(OrderId,itemId));
 		
 	}
 	
@@ -57,9 +58,10 @@ public class OrderDaoImpl implements OrderDao {
 	}
 
 	@Override
-	public Orders getOrder(int OrderId) {
+	public Orders getOrder(int OrderId,int itemId) {
 		// TODO Auto-generated method stub
-		return (Orders)session.getCurrentSession().get(Orders.class, OrderId);
+		OrdersId ord=new OrdersId(OrderId,itemId);
+		return (Orders)session.getCurrentSession().get(Orders.class, ord);
 	}
 
 	@Override

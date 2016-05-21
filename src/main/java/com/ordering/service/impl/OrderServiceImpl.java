@@ -31,9 +31,9 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Transactional
-	public void delete(int OrderId) {
+	public void delete(int OrderId,int itemId) {
 		// TODO Auto-generated method stub
-		orderDao.delete(OrderId);
+		orderDao.delete(OrderId,itemId);
 	}
 	
 	@Transactional
@@ -43,9 +43,9 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Transactional
-	public Orders getUser(int OrderId) {
+	public Orders getOrder(int OrderId,int ItemId) {
 		// TODO Auto-generated method stub
-		return orderDao.getOrder(OrderId);
+		return orderDao.getOrder(OrderId,ItemId);
 	}
 
 	@Transactional

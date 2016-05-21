@@ -567,7 +567,13 @@ public class UserController {
 			case "cancel":
 				
 				
-				oservice.delete(order_Id);
+				ArrayList<Orders> orderList = new ArrayList<>();
+				orderList =(ArrayList) oservice.getAllOrders();	
+				for(Orders ord: orderList){
+				if(ord.getOrdersId().getOrder_Id()==order_Id){
+				oservice.delete(order_Id,ord.getOrdersId().getItem_Id());
+				}
+				}
 				Orders newOrders = new Orders();
 				model.put("newOrders", newOrders);
 		        break;
