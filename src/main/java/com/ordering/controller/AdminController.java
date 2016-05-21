@@ -126,7 +126,6 @@ public class AdminController {
 		orderList =(ArrayList) orderservice.getAllOrders();
 		int orderid =0;
 		for(Orders o :orderList){
-			//System.out.println(o.getOrder_Id());
 			if(orderid ==0){
 				orderid = o.getOrdersId().getOrder_Id();
 				
@@ -139,6 +138,16 @@ public class AdminController {
         return "viewOrders";
     }
 
-	
-	
+	@RequestMapping(value = "/deleteallorders", method = RequestMethod.GET)
+    public String deleteAllOrders(Map<String, Object> model,HttpServletRequest request) {
+		if(!request.getSession().getAttribute("accessLevel").toString().equals("0")){
+			return("index"); 	
+		}
+		
+		orderservice.deleteAllOrders();
+		  
+		model.put("SuccessMessage", "Deleted Orders Successfully.");
+		return "adminHome";
+    }
+
 }

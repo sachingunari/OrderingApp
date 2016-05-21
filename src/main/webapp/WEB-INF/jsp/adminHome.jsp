@@ -4,6 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<title>Admin Operations</title>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 <style>
 ul {
@@ -77,6 +78,7 @@ table {
     <div class="dropdown-content" id="myDropdown">
       <a href="addremove" id ="addremove">Add or Remove</a>
       <a href="orders" id ="viewOrders">View Orders</a>
+      <a href="deleteallorders" id ="deleteallorders">Delete All Orders</a>
      </div>
   </li>
    <li><a href = "logout" style="
@@ -84,6 +86,9 @@ table {
     margin-left: 800px;
 ">Logout</a></li>
 </ul>
+<div>
+                   		<h2 style="color :black">${SuccessMessage}</h2>
+                   </div>
 <script>
 /* When the user clicks on the button, 
 toggle between hiding and showing the dropdown content */

@@ -12,6 +12,6 @@ public interface OrderService {
 	//public Orders getOrder(int OrderId);
 	public List getAllOrders();
 	public List getCustomerOrder(int user_Id);
-
+	public void deleteAllOrders();
 
 }

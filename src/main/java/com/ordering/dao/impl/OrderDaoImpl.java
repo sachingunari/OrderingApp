@@ -1,8 +1,10 @@
 package com.ordering.dao.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Query;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -36,6 +38,22 @@ public class OrderDaoImpl implements OrderDao {
 		// TODO Auto-generated method stub
 		session.getCurrentSession().delete(getOrder(OrderId));
 		
+	}
+	
+	@Override
+	public void deleteAllOrders() {
+		// TODO Auto-generated method stub
+	//	ArrayList<Orders> tempList = new ArrayList<Orders>();
+		//tempList = (ArrayList<Orders>) getAllOrders();
+		//((Session) session).createQuery("delete from Orders").executeUpdate();
+		//((Session) session).createQuery("delete from User_Role").executeUpdate();
+		Query query = session.
+			      getCurrentSession().
+			      createQuery("delete from Orders");
+			    //query.setParameter("user_Id", user_Id);
+			    query.executeUpdate();
+		System.out.println("Reached here successfully");
+//		session.getCurrentSession().delete(tempList);		
 	}
 
 	@Override
