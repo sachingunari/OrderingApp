@@ -243,8 +243,22 @@ public class UserController {
 	  
 	  @RequestMapping(value = "/loginCust", method = RequestMethod.GET)
 	    public String doLogins(Map<String, Object> model,HttpSession session,HttpServletRequest request) {
-		    User user = new User();
-		  ((Model) model).addAttribute("order", new ArrayList<Item>());
+		  //  User user = new User();
+		 // ((Model) model).addAttribute("order", new ArrayList<Item>());
+		  
+		  
+		  Item item = new Item();
+	        Category cat=new Category();
+	        model.put("item", item);
+	        
+	    
+			itemList =(ArrayList) itemservice.getAllItems();
+			model.put("itemList", itemList);
+			
+		
+			categoryList =(ArrayList) categoryservice.getAllCategories();
+			model.put("categoryList", categoryList);
+			
 		    return "customerHome";
 		}
 	
