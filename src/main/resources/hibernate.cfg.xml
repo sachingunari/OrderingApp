@@ -9,5 +9,6 @@
         <mapping class="com.ordering.model.Item" />
         <mapping class="com.ordering.model.Category" />
         <mapping class="com.ordering.model.Orders" />
+        <mapping class="com.ordering.model.OrdersId" />
     </session-factory>         
 </hibernate-configuration>

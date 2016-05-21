@@ -565,7 +565,8 @@ public class UserController {
 			
 			switch(action.toLowerCase()){	//only in Java7 you can put String in switch
 			case "cancel":
-	
+				
+				
 				oservice.delete(order_Id);
 				Orders newOrders = new Orders();
 				model.put("newOrders", newOrders);
@@ -582,7 +583,6 @@ public class UserController {
 		return "customerHome";
 
 	}
-
 
 
 	   
