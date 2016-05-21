@@ -7,7 +7,7 @@
 
 <html lang="en">
 <head>
-  <title>TakeOutOrder</title>
+  <title>Administrator Login</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -145,12 +145,12 @@
 	 
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>                 
-                            <form:input path="username" id="email" type="email" name="email"   class="form-control" placeholder="Email Address" />                                       
+                            <form:input path="username" id="email" type="email" name="email"   class="form-control" placeholder=" Admin Email Address" />                                       
                         </div>
 
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                            <form:password path="password" class="form-control" name="password" value="" placeholder="Password" />  
+                            <form:password path="password" class="form-control" name="password" value="" placeholder="Admin Password" />  
                   </div>
 
                         <button type="submit" class="btn btn-primary">Login</button>

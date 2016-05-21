@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<title>OrderStatus</title>
+<title>Admin - View All Orders</title>
 </head>
 <style>
 ul {
@@ -39,6 +39,31 @@ li a:hover, .dropdown:hover .dropbtn {
     background-color: red;
 }
 
+li.dropdown {
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.show {display:block;}
+
+
 table, td, th {    
     border: 1px solid #ddd;
     text-align: left;
@@ -56,11 +81,18 @@ th, td {
 <body>
 <ul>
   <li><a class="active" href="adminHome">Home</a></li>
+  <li class="dropdown">
+    <a href="javascript:void(0)" class="dropbtn" onclick="myFunction()">Admin Console</a>
+    <div class="dropdown-content" id="myDropdown">
+      <a href="addremove" id ="addremove">Add or Remove</a>
+      <a href="orders" id ="viewOrders">View Orders</a>
+      <a href="deleteallorders" id ="deleteallorders">Delete All Orders</a>
+     </div>
+  </li>
    <li><a href = "logout" style="
     border-left-width: 100px;
     margin-left: 800px;
 ">Logout</a></li>
- 
 </ul>
 
 <div class ="row">
@@ -118,5 +150,10 @@ th, td {
 			</div>
 	</div>
 </div>
+<script type="text/javascript">
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+</script>
 </body>
 </html>

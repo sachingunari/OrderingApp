@@ -55,7 +55,7 @@ th, td {
 </style>
 <body>
 <ul>
-  <li><a class="active" href="adminHome">Home</a></li>
+  <li><a class="active" href="loginCust">Home</a></li>
    <li><a href = "logout" style="
     border-left-width: 100px;
     margin-left: 800px;
