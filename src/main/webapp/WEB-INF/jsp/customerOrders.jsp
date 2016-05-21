@@ -80,7 +80,7 @@ th, td {
 							<th>Pick Up Time</th>
 							<th>Order Status</th>
 							
-					<% ArrayList<Orders> CustomerOrders = new ArrayList<>();
+					<% ArrayList<Orders> CustomerOrders = new ArrayList<Orders>();
 						CustomerOrders =(ArrayList)request.getAttribute("CustomerOrders");
 					%>
 					<%

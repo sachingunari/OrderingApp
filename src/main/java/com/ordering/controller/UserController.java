@@ -404,7 +404,26 @@ public class UserController {
 
 
 
-		List<Orders> os=oservice.getAllOrders();
+		List<Orders> oss=oservice.getAllOrders();
+		List<Orders> os=new ArrayList<Orders>();
+		
+		for(Orders ordz:oss){
+			
+			boolean b=true;
+							for(Orders ordzs:os){
+								
+								if(ordz.getOrdersId()==ordzs.getOrdersId()){
+									b=false;
+									break;
+								}
+								
+							}	
+					if(b==true){
+						os.add(ordz);
+					}
+			
+		}
+		
 		
 	
 		for (int j=0;j<60;j++){
@@ -505,12 +524,13 @@ public class UserController {
 			
 			System.out.println(sdf.format(fulfillment_Starttime.getTime())+"order not possibleeeeeeeeeeeeeee");
 		count=0;
+	
 		}
 		
 	
 		
 		
-	
+		order.clear();
 			return "checkout";
 		}
 
