@@ -42,8 +42,25 @@ public class Orders {
 	private int cooking_Times=0;
 	@Column
 	private String orders_status;
+	@Column
+	private int order_Total;
+	@Column
+	private String order_Time;
+
+
 	
-	
+	public String getOrder_Time() {
+		return order_Time;
+	}
+	public void setOrder_Time(String order_Time) {
+		this.order_Time = order_Time;
+	}
+	public int getOrder_Total() {
+		return order_Total;
+	}
+	public void setOrder_Total(int order_Total) {
+		this.order_Total = order_Total;
+	}
 	public int getCooking_Times() {
 		return cooking_Times;
 	}

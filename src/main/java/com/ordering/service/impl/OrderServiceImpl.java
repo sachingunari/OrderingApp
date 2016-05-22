@@ -60,6 +60,18 @@ public class OrderServiceImpl implements OrderService {
 		return orderDao.getCustomerOrder(user_Id);
 	}
 
+	@Transactional
+	public List getOrderReport(String fromdate, String todate){
+		
+		return orderDao.getOrderReport(fromdate,todate);
+	}
+
+	@Transactional
+	public List getOrderByMenu(String fromdate, String todate)
+	{
+		return orderDao.getOrderByMenu(fromdate,todate);
+	}
+
 
 
 

@@ -1,6 +1,7 @@
 package com.ordering.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -149,5 +150,69 @@ public class AdminController {
 		model.put("SuccessMessage", "Deleted Orders Successfully.");
 		return "adminHome";
     }
+	
+	
+	@RequestMapping(value = "/generateReport", method = RequestMethod.GET)
+    public String getGenerateReport(Map<String, Object> model,HttpServletRequest request) {
+	
+		return "generateReport";
+	}
+	
+	@RequestMapping(value = "/generateReport", method = RequestMethod.POST)
+    public String postGenerateReport(Map<String, Object> model,HttpServletRequest request,@RequestParam String fromdate, @RequestParam String todate) {
+		
+		String fromDate  = fromdate + " 00:00:00";
+		String toDate = todate + " 00:00:00";
+		
+		ArrayList<Orders> orderList = new ArrayList<>();
+		ArrayList<Item> itemList = new ArrayList<>();
+		orderList = (ArrayList<Orders>)orderservice.getOrderReport(fromDate, toDate);
+		for(Orders ord : orderList)
+		{
+			int itemId = ord.getOrdersId().getItem_Id();
+			Item item = itemservice.getItem(itemId);
+			itemList.add(item);
+			
+		}
+		model.put("orderList", orderList);
+		model.put("itemList", itemList);
+		
+		return "orderReport";
+	}
+
+	@RequestMapping(value = "/generateReport1", method = RequestMethod.POST)
+    public String getReportByMenu(Map<String, Object> model,HttpServletRequest request,@RequestParam String fromdate, @RequestParam String todate) {
+		
+		String fromDate  = fromdate + " 00:00:00";
+		String toDate = todate + " 00:00:00";
+		
+		ArrayList<Orders> orderList = new ArrayList<>();
+		ArrayList<Category> catList = new ArrayList<>();
+		ArrayList<Item> itemList = new ArrayList<>();
+		HashMap<Integer, Integer> itemMap = new HashMap<Integer, Integer>();
+		
+		orderList = (ArrayList<Orders>)orderservice.getOrderByMenu(fromDate, toDate);
+		for(Orders ord : orderList)
+		{
+			int itemId = ord.getOrdersId().getItem_Id();
+			Item item = itemservice.getItem(itemId);
+			itemList.add(item);
+			
+		}
+		catList = (ArrayList<Category>)categoryservice.getAllCategories();
+		
+		model.put("orderList", orderList);
+		model.put("catList", catList);
+		model.put("itemList", itemList);
+		
+		return "menuReport";
+	}
+	
+
+
+
+	
+	
+	
 
 }

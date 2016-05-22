@@ -83,10 +83,31 @@ public class OrderDaoImpl implements OrderDao {
 		//return (List)session.getCurrentSession().get(Orders.class, user_Id);
 	}
 
-
+	@Override
+	public List getOrderReport(String fromdate, String todate) {
+		// TODO Auto-generated method stub
+		Query query = session.getCurrentSession().createQuery("from Orders where order_Time >= :fromdate AND order_Time <= :todate");
+			    query.setParameter("fromdate", fromdate);
+			    query.setParameter("todate", todate);
+			  
+			    List templist =query.list();
+			    return templist;
+	}
 
 	
-	
+	@Override
+	public List getOrderByMenu(String fromdate, String todate) {
+		// TODO Auto-generated method stub
+		Query query = session.getCurrentSession().createQuery("from Orders where order_Time >= :fromdate AND order_Time <= :todate");			  
+			    
+				query.setParameter("fromdate", fromdate);
+				query.setParameter("todate", todate);
+				List templist =query.list();
+			    return templist;
+	}
+
+
+
 	
 	
 	

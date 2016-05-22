@@ -179,7 +179,7 @@ System.out.println("month: " +maxmonth +" day: "+maxday+" maxyear: "+maxyear);
 					<td><input value="${item.calories}" name="calories"></td> 
 					<td style="display :none"><input value="${item.cooking_Time}" name="cooking_Time" ></td>
 					
-					<td ><input type="text" placeholder="quantity" name="quantity"></input></td>
+					<td ><select class="1-100" name="quantity"></select></td>
 					<td>
 					<input type="submit" value="addproducts"/>
 					</td>		
@@ -210,7 +210,7 @@ System.out.println("month: " +maxmonth +" day: "+maxday+" maxyear: "+maxyear);
 					<td><input value="${item.cost}" name="cost"></td>
 					<td><input value="${item.calories}" name="calories"></td>
 					<td style="display :none"><input value="${item.cooking_Time}" name="cooking_Time" ></td>
-					<td><input type="text" placeholder="quantity" name="quantity"></input></td>
+					<td><select class="1-100" name="quantity"></select></td>
 					<td>
 					<input type="submit" value="addproducts"/>
 					</td>		
@@ -241,7 +241,7 @@ System.out.println("month: " +maxmonth +" day: "+maxday+" maxyear: "+maxyear);
 					<td><input value="${item.cost}" name="cost"></td>
 					<td><input value="${item.calories}" name="calories"></td>
 					<td style="display :none"><input value="${item.cooking_Time}" name="cooking_Time" ></td>
-					<td><input type="text" placeholder="quantity" name="quantity"></input></td>
+					<td><select class="1-100" name="quantity"></select></td>
 					<td>
 					<input type="submit" value="addproducts"/>
 					</td>		
@@ -272,7 +272,7 @@ System.out.println("month: " +maxmonth +" day: "+maxday+" maxyear: "+maxyear);
 					<td><input value="${item.cost}" name="cost"></td>
 					<td><input value="${item.calories}" name="calories"></td>
 					<td style="display :none"><input value="${item.cooking_Time}" name="cooking_Time" ></td>
-					<td><input type="text" placeholder="quantity" name="quantity"></input></td>
+					<td><select class="1-100" name="quantity"></select></td>
 					<td>
 					<input type="submit" value="addproducts"/>
 					</td>		
@@ -342,6 +342,13 @@ window.onclick = function(e) {
     }
   }
 }
+
+$(function(){
+    var $select = $(".1-100");
+    for (i=1;i<=100;i++){
+        $select.append($('<option></option>').val(i).html(i))
+    }
+});
 </script>
 
 </body>

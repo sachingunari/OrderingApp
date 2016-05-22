@@ -13,5 +13,7 @@ public interface OrderService {
 	public List getAllOrders();
 	public List getCustomerOrder(int user_Id);
 	public void deleteAllOrders();
-
+	public List getOrderReport(String fromdate, String todate);
+	public List getOrderByMenu(String fromdate, String todate);
+	
 }
