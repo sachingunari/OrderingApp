@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.ordering.dao.ItemDao;
 import com.ordering.model.Category;
 import com.ordering.model.Item;
+import com.ordering.model.MailClient;
 import com.ordering.model.Orders;
 import com.ordering.service.CategoryService;
 import com.ordering.service.ItemService;
@@ -37,6 +38,8 @@ public class AdminController {
 	private CategoryService categoryservice;
 	@Autowired
 	private OrderService orderservice;
+	
+	MailClient mailclient=new MailClient();
 	
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	
@@ -258,9 +261,11 @@ public class AdminController {
     			ordz.setOrders_status("Order Completed");
     			orderservice.edit(ordz);
     		}
-    		else if(fulfillment_Starttime.before(Calendar.getInstance())&& ready_Time.before(Calendar.getInstance())){
+    		else if(fulfillment_Starttime.before(Calendar.getInstance())&& ready_Time.after(Calendar.getInstance())){
     			
     			ordz.setOrders_status("In Process");
+    	         //mailclient.sendMail(userForm.getUsername(),"Restuarant@SJSU275.edu",userForm.getUsername(),Integer.toString(user.getUserId()));             
+
     			orderservice.edit(ordz);
      		}
     		else if(fulfillment_Starttime.after(Calendar.getInstance())){
