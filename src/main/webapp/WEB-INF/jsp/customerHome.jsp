@@ -109,7 +109,9 @@ table {
 				</c:forEach>
 				<tr>
 						<td>total</td> 
-						<td>${totals}</td>						
+						<td>${totals}</td>	
+						<td>${message}</td>	
+						<td>${etime}</td>						
 					</tr>
 
 			</table>		
@@ -123,6 +125,7 @@ table {
 					<td>
 		<input name="times" type=time min="06:00" max="21:00" step="01" value="00:00">
 		  </td>
+
 		  <td>
 			<%  java.util.Date date= new java.util.Date();
             		java.util.Calendar cal = java.util.Calendar.getInstance();
