@@ -1,6 +1,9 @@
 package com.ordering.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -8,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -33,6 +37,8 @@ public class AdminController {
 	private CategoryService categoryservice;
 	@Autowired
 	private OrderService orderservice;
+	
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	
 	@RequestMapping(value = "/addremove", method = RequestMethod.GET)
     public String doLogin(Map<String, Object> model,HttpServletRequest request) {
@@ -214,8 +220,65 @@ public class AdminController {
 		return "menuReport";
 	}
 	
+	
+    @Scheduled(fixedDelay = 60000)
+    public void demoServiceMethod()
+    {
+       // System.out.println("Method executed at every 5 seconds. Current time is :: "+ Calendar.getInstance());
+    	ArrayList<Orders> ord = new ArrayList<>();
+    	ord = (ArrayList<Orders>)orderservice.getAllOrders();
+    	
+    	for (Orders ordz : ord) {
+    		
+    		Calendar fulfillment_Starttime = Calendar.getInstance();
+    		Calendar pickup_Time = Calendar.getInstance();
+    		Calendar ready_Time = Calendar.getInstance();
+    		
+    		try {
+    			fulfillment_Starttime.setTime(sdf.parse(ordz.getFulfillment_Starttime()));
+    		} catch (ParseException e) {
+    			// TODO Auto-generated catch block
+    			e.printStackTrace();
+    		}
+    		try {
+    		pickup_Time.setTime(sdf.parse(ordz.getPickup_Time()));
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    		try {
+		ready_Time.setTime(sdf.parse(ordz.getReady_Time()));
+	} catch (ParseException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+    		
+    		if(ready_Time.before(Calendar.getInstance())){
+    			
+    			ordz.setOrders_status("Order Completed");
+    			orderservice.edit(ordz);
+    		}
+    		else if(fulfillment_Starttime.before(Calendar.getInstance())&& ready_Time.before(Calendar.getInstance())){
+    			
+    			ordz.setOrders_status("In Process");
+    			orderservice.edit(ordz);
+     		}
+    		else if(fulfillment_Starttime.after(Calendar.getInstance())){
+    			
+    			ordz.setOrders_status("In Queue");
+    			orderservice.edit(ordz);
+    			
+    		}
+    		
+    		
+    	
+    	}
+    	
+    }
 
-
+	
+	
+	
 
 	
 	

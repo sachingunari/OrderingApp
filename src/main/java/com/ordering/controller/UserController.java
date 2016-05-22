@@ -1,6 +1,5 @@
 package com.ordering.controller;
 
-import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -440,8 +439,8 @@ public class UserController {
 
 			}
 
-			if (found == true && (fulfillment_Starttime.after(day_Start_Time))) { 
-				
+			if (found == true && (fulfillment_Starttime.after(day_Start_Time))) {
+
 				int counts = 0;
 				for (Item i : order) {
 					ord.setOrders_status("in Queue");
@@ -488,7 +487,8 @@ public class UserController {
 			// System.out.println(sdf.format(fulfillment_Starttime.getTime())+"order
 			// not possibleeeeeeeeeeeeeee");
 
-			fulfillment_Starttime.setTimeInMillis(day_Start_Time.getTimeInMillis());;
+			fulfillment_Starttime.setTimeInMillis(day_Start_Time.getTimeInMillis());
+			;
 			ready_Time.setTimeInMillis(day_Start_Time.getTimeInMillis());
 			ready_Time.add(Calendar.MINUTE, cooking_Time);
 
@@ -524,14 +524,15 @@ public class UserController {
 							&& (fulfillment_Starttimes.before(ready_Time) || fulfillment_Starttimes.equals(ready_Time)))
 							|| ((ready_Times.after(fulfillment_Starttime) || ready_Times.equals(fulfillment_Starttime))
 									&& (ready_Times.before(ready_Time) || ready_Times.equals(ready_Time)))
-							|| (fulfillment_Starttimes.before(fulfillment_Starttime)&& ready_Times.after(ready_Time))) {
+							|| (fulfillment_Starttimes.before(fulfillment_Starttime)
+									&& ready_Times.after(ready_Time))) {
 
 						count++;
 						if (count >= 3) {
 							found = false;
 							break;
 						}
-					
+
 					}
 
 				}
