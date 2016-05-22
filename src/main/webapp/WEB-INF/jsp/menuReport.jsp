@@ -18,6 +18,10 @@
 <title>OrderStatus</title>
 </head>
 <style>
+body {
+        background: #3CC;        
+		background-image : url("http://indospartans.com/uploads/tk.jpg");
+    }
 ul {
     list-style-type: none;
     margin: 0;
@@ -63,7 +67,7 @@ table.dataTable{width:100%;margin:0 auto;clear:both;border-collapse:separate;bor
   <li><a class="active" href="adminHome">Home</a></li>
    <li><a href = "logout" style="
     border-left-width: 100px;
-    margin-left: 800px;
+    margin-left: 1200px;
 ">Logout</a></li>
  
 </ul>

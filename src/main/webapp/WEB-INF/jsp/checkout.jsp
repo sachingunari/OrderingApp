@@ -53,14 +53,11 @@ th, td {
 <body>
 <ul>
   <li><a class="active" href="loginCustomer">Home</a></li>
-  <li class="dropdown">
-    <a href="javascript:void(0)" class="dropbtn" onclick="myFunction()">Menu Category</a>
-  </li>
 </ul>
 
 <div class ="row">
 	<div align="center">
-		<h3>Thank you for your order ! Your session has been invalidated.</h3>
+		<h3>Thank you for your order</h3>
 		
 		<%session.invalidate(); %>
 	</div>

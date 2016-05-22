@@ -152,13 +152,19 @@ public class AdminController {
     }
 	
 	
-	@RequestMapping(value = "/generateReport", method = RequestMethod.GET)
-    public String getGenerateReport(Map<String, Object> model,HttpServletRequest request) {
+	@RequestMapping(value = "/orderReport", method = RequestMethod.GET)
+    public String getOrderReport(Map<String, Object> model,HttpServletRequest request) {
 	
-		return "generateReport";
+		return "generateOrdReport";
 	}
 	
-	@RequestMapping(value = "/generateReport", method = RequestMethod.POST)
+	@RequestMapping(value = "/menuReport", method = RequestMethod.GET)
+    public String getMenuReport(Map<String, Object> model,HttpServletRequest request) {
+	
+		return "generateMenuReport";
+	}
+	
+	@RequestMapping(value = "/orderReport", method = RequestMethod.POST)
     public String postGenerateReport(Map<String, Object> model,HttpServletRequest request,@RequestParam String fromdate, @RequestParam String todate) {
 		
 		String fromDate  = fromdate + " 00:00:00";
@@ -180,7 +186,7 @@ public class AdminController {
 		return "orderReport";
 	}
 
-	@RequestMapping(value = "/generateReport1", method = RequestMethod.POST)
+	@RequestMapping(value = "/menuReport", method = RequestMethod.POST)
     public String getReportByMenu(Map<String, Object> model,HttpServletRequest request,@RequestParam String fromdate, @RequestParam String todate) {
 		
 		String fromDate  = fromdate + " 00:00:00";

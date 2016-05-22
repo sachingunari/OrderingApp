@@ -15,6 +15,10 @@
 <title>Admin - View All Orders</title>
 </head>
 <style>
+body {
+        background: #3CC;        
+		background-image : url("http://indospartans.com/uploads/tk.jpg");
+    }
 ul {
     list-style-type: none;
     margin: 0;
@@ -81,18 +85,7 @@ th, td {
 <body>
 <ul>
   <li><a class="active" href="adminHome">Home</a></li>
-  <li class="dropdown">
-    <a href="javascript:void(0)" class="dropbtn" onclick="myFunction()">Admin Console</a>
-    <div class="dropdown-content" id="myDropdown">
-      <a href="addremove" id ="addremove">Add or Remove</a>
-      <a href="orders" id ="viewOrders">View Orders</a>
-      <a href="deleteallorders" id ="deleteallorders">Delete All Orders</a>
-     </div>
-  </li>
-   <li><a href = "logout" style="
-    border-left-width: 100px;
-    margin-left: 800px;
-">Logout</a></li>
+  <li><a href = "logout" style=" border-left-width: 100px;margin-left: 1200px;">Logout</a></li>
 </ul>
 
 <div class ="row">
@@ -141,10 +134,10 @@ th, td {
 							<td> <%=o.getOrders_status()%> </td>
 							
             		</tr>
-        <%id =  o.getOrdersId().getOrder_Id();
-    	orderidstring1 = "";
+        			<%id =  o.getOrdersId().getOrder_Id();
+    						orderidstring1 = "";
 		
-		 } %>
+					} %>
 					
 				</table>
 			</div>

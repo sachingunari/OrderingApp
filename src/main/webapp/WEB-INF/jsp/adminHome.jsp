@@ -78,15 +78,15 @@ table {
     <div class="dropdown-content" id="myDropdown">
       <a href="addremove" id ="addremove">Add or Remove</a>
       <a href="orders" id ="viewOrders">View Orders</a>
-      <a href="generateReport" id ="">Generate Report by Order</a>
-      <a href="generateReport1" id ="">Generate Report by Menu</a>
+      <a href="orderReport" id ="">Generate Report by Order</a>
+      <a href="menuReport" id ="">Generate Report by Menu</a>
       
       <a href="deleteallorders" id ="deleteallorders">Delete All Orders</a>
      </div>
   </li>
    <li><a href = "logout" style="
     border-left-width: 100px;
-    margin-left: 800px;
+    margin-left: 1200px;
 ">Logout</a></li>
 </ul>
 <div>

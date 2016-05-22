@@ -73,7 +73,6 @@ table {
     margin-left: 0px;
 ">
   <li><a class="active" href="#">Home</a></li>
-  <li><a href="#news">News</a></li>
   <li class="dropdown">
     <a href="javascript:void(0)" class="dropbtn" onclick="myFunction()">Menu Category</a>
     <div class="dropdown-content" id="myDropdown">
@@ -86,7 +85,7 @@ table {
   <li><a href="customerOrders">My Orders</a></li>
   <li><a href = "logout" style="
     border-left-width: 100px;
-    margin-left: 800px;
+    margin-left: 900px;
 ">Logout</a></li>
 </ul>
 

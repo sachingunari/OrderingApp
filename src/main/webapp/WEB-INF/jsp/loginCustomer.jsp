@@ -187,6 +187,7 @@
             <form:form action="signup"  method="POST" id="signup" commandName="user">
                 <h1>Create an Account</h1>
 				<form:input path="username" id="email" type="email" name="email"   class="form-control" placeholder="Email Address" />                                     
+                <br>
                 <form:password path="password" class="form-control" name="password" value="" placeholder="Password" />
                 <input type="submit" value="Sign me up!" class="inputButton"/>
 

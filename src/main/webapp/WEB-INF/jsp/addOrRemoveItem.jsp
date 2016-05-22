@@ -12,6 +12,10 @@
 <title>Admin Management</title>
 </head>
 <style>
+body {
+        background: #3CC;        
+		background-image : url("http://indospartans.com/uploads/tk.jpg");
+    }
 ul {
     list-style-type: none;
     margin: 0;
@@ -53,12 +57,9 @@ th, td {
 <body>
 <ul>
   <li><a class="active" href="adminHome">Home</a></li>
-  <li class="dropdown">
-    <a href="javascript:void(0)" class="dropbtn" onclick="myFunction()">Menu Category</a>
-  </li>
    <li><a href = "logout" style="
     border-left-width: 100px;
-    margin-left: 800px;
+    margin-left: 1200px;
 ">Logout</a></li>
 </ul>
 
@@ -76,7 +77,7 @@ th, td {
                 <div class="form-group">
                     <label for="InputId">Item  Id</label>
                     <div class="input-group">
-                        <form:input path="Id" type="text" class="form-control" placeholder="Enter Id" />
+                        <form:input path="Id" type="text" class="form-control" placeholder="Enter Id" required="required"/>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
                 </div>
@@ -118,7 +119,7 @@ th, td {
                 <div class="form-group">
                     <label for="InputCategoryId">Category Id:</label>
                     <div class="input-group">
-                        <select name="Category" class="form-control">
+                        <select name="Category" class="form-control" >
 						<c:forEach items="${catList}" var="Category">
 						    <option value="${Category.category_Id}">${Category.category_Name}</option>
 						</c:forEach>
