@@ -317,7 +317,7 @@ public class UserController {
 
 	@RequestMapping(value = "/placeorder", method = RequestMethod.POST)
 	public String doLogins(@ModelAttribute("orders") ArrayList<Item> orders, BindingResult result,
-			@RequestParam String dates, @RequestParam String times, @RequestParam String total,
+			@RequestParam String dates, @RequestParam String times, @RequestParam int total,
 			@RequestParam int totaltime, Model model, HttpSession session, HttpServletRequest request) {
 
 		Orders ord = new Orders();
@@ -453,6 +453,7 @@ public class UserController {
 					ord.setReady_Time(sdf.format(ready_Time.getTime()));
 					ord.setCooking_Times(cooking_Time);
 					ord.setOrdersId(ords);
+					ord.setOrder_Total(total);
 					oservice.add(ord);
 
 					orderRelatedMessage += "\n \n" + counts + ": ";
