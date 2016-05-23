@@ -72,48 +72,6 @@ public class UserController {
 		model.addAttribute("user", user);
 		return "registration";
 	}
-	/*
-	 * @RequestMapping(value = "/loginCust", params={ "username" , "password"},
-	 * method = RequestMethod.POST) public String
-	 * doLogin(@Valid @ModelAttribute("user") User userForm,BindingResult
-	 * result, Map<String, Object> model,HttpSession session,HttpServletRequest
-	 * request) {
-	 * //request.getSession().setAttribute("userName",userForm.getUsername());
-	 * //request.getSession().setAttribute("accessLevel",userForm.getAccessLevel
-	 * ());
-	 * 
-	 * if(result.hasErrors()) { return "loginCustomer"; } User user =
-	 * userService.getUser(userForm.getUsername()); ModelAndView modelandview =
-	 * new ModelAndView(); //User u =userService.getUser(user.getUsername());
-	 * if(user== null) { model.put("error", "Wrong Credentials"); return
-	 * "loginCustomer"; }
-	 * 
-	 * Item item = new Item(); Category cat=new Category(); model.put("item",
-	 * item);
-	 * 
-	 * 
-	 * itemList =(ArrayList) itemservice.getAllItems(); model.put("itemList",
-	 * itemList);
-	 * 
-	 * 
-	 * categoryList =(ArrayList) categoryservice.getAllCategories();
-	 * model.put("categoryList", categoryList);
-	 * 
-	 * 
-	 * 
-	 * 
-	 * if(user!=null &&
-	 * userForm.getPassword().equals(user.getPassword())&&user.isEnabled()==true
-	 * ){ session = request.getSession();
-	 * session.setAttribute("username",userForm.getUsername());
-	 * session.setAttribute("accessLevel", userForm.getAccessLevel());
-	 * session.setAttribute("order", order);
-	 * request.getSession().setAttribute("userid",user.getUserId());
-	 * 
-	 * return "customerHome"; } else{ return "loginCustomer"; }
-	 * 
-	 * }
-	 */
 
 	@RequestMapping(value = "/loginCust", params = { "username", "password" }, method = RequestMethod.POST)
 	public String doLogin(@Valid @ModelAttribute("user") User userForm, BindingResult result, Map<String, Object> model,
@@ -209,21 +167,43 @@ public class UserController {
 
 	@RequestMapping(value = "/loginCust", method = RequestMethod.GET)
 	public String doLogins(Map<String, Object> model, HttpSession session, HttpServletRequest request) {
-		// User user = new User();
-		// ((Model) model).addAttribute("order", new ArrayList<Item>());
-
-		Item item = new Item();
-		Category cat = new Category();
-		model.put("item", item);
-
-		itemList = (ArrayList) itemservice.getAllItems();
+		if(request.getSession().getAttribute("username")==null){
+			return "index";
+		}
+	  
+	  Item item = new Item();
+        Category cat=new Category();
+        model.put("item", item);
+        
+    
+		itemList =(ArrayList) itemservice.getAllItems();
 		model.put("itemList", itemList);
-
-		categoryList = (ArrayList) categoryservice.getAllCategories();
+		
+	
+		categoryList =(ArrayList) categoryservice.getAllCategories();
 		model.put("categoryList", categoryList);
+		//Jason
+		   
+	  	int total=0;
+		int totaltime=0;
+		for (Item i: order){
+	    	total+= i.getCost()*i.getQuantity();
+	    	totaltime+=i.getCooking_Time();
+	    }
+	    
+	    ((Model) model).addAttribute("totals",total);
+	    ((Model) model).addAttribute("totalstime",totaltime);
 
+	    
+	    ArrayList itemList = new ArrayList<>();
+		itemList =(ArrayList) itemservice.getAllItems();
+		model.put("itemList", itemList);
+	    
 		return "customerHome";
+		
 	}
+
+	
 
 	@RequestMapping(value = "/addUser", method = RequestMethod.POST)
 	public String doActions(@ModelAttribute User user, BindingResult result, @RequestParam String action,
@@ -267,53 +247,7 @@ public class UserController {
 		return "checkout";
 	}
 
-	/*
-	 * @RequestMapping(value = "/placeorder", method = RequestMethod.POST)
-	 * public String doLogins(@ModelAttribute("orders") ArrayList<Item>
-	 * orders,BindingResult result,@RequestParam String dates,@RequestParam
-	 * String times,@RequestParam String total,@RequestParam int totaltime,
-	 * Model model,HttpSession session,HttpServletRequest request) {
-	 * 
-	 * Orders ord=new Orders(); int ord_Id=rand.nextInt(10000);
-	 * 
-	 * String fulfillment_Starttime = null; String pickup_Time = null; String
-	 * ready_Time = null; List os=oservice.getAllOrders();
-	 * 
-	 * System.out.println(""); String orderRelatedMessage = ""; int userid =
-	 * Integer.parseInt(session.getAttribute("userid").toString()); int counts
-	 * =0; for(Item i:order){ counts++; orderRelatedMessage += "\n \n"+ counts +
-	 * ": "; ord.setOrders_status("in Queue"); ord.setOrder_Id(ord_Id);
-	 * orderRelatedMessage += "\n Order_id: "+ord_Id;
-	 * 
-	 * ord.setItem_Quantity(i.getQuantity()); orderRelatedMessage +=
-	 * "\n Order_quantity: "+i.getQuantity();
-	 * 
-	 * ord.setItem_Id(i.getId()); orderRelatedMessage += "\n Item_id: "
-	 * +i.getId();
-	 * 
-	 * ord.setFulfillment_Starttime(dates+" "+times+":00"); orderRelatedMessage
-	 * += "\n Order_fulfillment time: "+dates+" "+times+":00";
-	 * 
-	 * ord.setPickup_Time(dates+" "+times+":00"); orderRelatedMessage +=
-	 * "\n Pickup time: "+dates+" "+times+":00";
-	 * 
-	 * ord.setReady_Time(dates+" "+times+":00"); orderRelatedMessage +=
-	 * "\n Ready time: "+dates+" "+times+":00";
-	 * 
-	 * ord.setUser_Id(userid); orderRelatedMessage += "\n userid: "+userid;
-	 * 
-	 * oservice.add(ord);
-	 * 
-	 * } String from =request.getSession().getAttribute("username").toString();
-	 * System.out.println(from);
-	 * mailclient.sendMailWithOrderDetails(from,"Restuarant@SJSU275.edu",
-	 * orderRelatedMessage);
-	 * 
-	 * session.setAttribute("order", null); return "checkout"; }
-	 * 
-	 */
-
-	// Sachin Change Place Order
+	// Changed Place Order
 
 	@RequestMapping(value = "/placeorder", method = RequestMethod.POST)
 	public String doLogins(@ModelAttribute("orders") ArrayList<Item> orders, BindingResult result,
@@ -443,7 +377,7 @@ public class UserController {
 
 				int counts = 0;
 				for (Item i : order) {
-					ord.setOrders_status("in Queue");
+					ord.setOrders_status("In Queue");
 					ords.setItem_Id(i.getId());
 					ords.setOrder_Id(ord_Id);
 					ord.setUser_Id(userid);
@@ -484,9 +418,6 @@ public class UserController {
 		}
 
 		if (count >= 3 || found == false) {
-
-			// System.out.println(sdf.format(fulfillment_Starttime.getTime())+"order
-			// not possibleeeeeeeeeeeeeee");
 
 			fulfillment_Starttime.setTimeInMillis(day_Start_Time.getTimeInMillis());
 			;
@@ -595,6 +526,7 @@ public class UserController {
 				}
 				Orders newOrders = new Orders();
 				model.put("newOrders", newOrders);
+				model.put("message","Ordered Cancelled");
 				break;
 			}
 
@@ -608,5 +540,14 @@ public class UserController {
 		return "customerHome";
 
 	}
+	
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public String logout(Map<String, Object> model,HttpSession session,HttpServletRequest request) {
+		request.getSession().setAttribute("order", null);
+		session.invalidate();
+		order.clear();
+         return "index";
+    }
+
 
 }

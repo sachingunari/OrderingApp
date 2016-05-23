@@ -73,6 +73,7 @@ table {
     margin-left: 0px;
 ">
   <li><a class="active" href="#">Home</a></li>
+  <li><a href="#news">News</a></li>
   <li class="dropdown">
     <a href="javascript:void(0)" class="dropbtn" onclick="myFunction()">Menu Category</a>
     <div class="dropdown-content" id="myDropdown">
@@ -85,13 +86,13 @@ table {
   <li><a href="customerOrders">My Orders</a></li>
   <li><a href = "logout" style="
     border-left-width: 100px;
-    margin-left: 900px;
+    margin-left: 800px;
 ">Logout</a></li>
 </ul>
 
 <div id ="shoppingCart">
 	<h3>Your Order Details</h3>		
-			<table border="1">
+			<table border="0">
 				<tr>
 					<th>Name:</th>
 					<th>Price:</th>
@@ -122,7 +123,7 @@ table {
 					<td> <input value="${totalstime}" style="display :none" name="totaltime"></input></td>
 					
 					<td>
-		<input name="times" type=time min="06:00" max="21:00" step="01" value="00:00">
+		<input name="times" type=time min="06:00" max="21:00" step="01" value="10:00">
 		  </td>
 
 		  <td>
@@ -158,7 +159,7 @@ System.out.println("month: " +maxmonth +" day: "+maxday+" maxyear: "+maxyear);
 	<h3>
 		<p>Click on the "Menu Category" link to see the menu.</p>
 	</h3>
-	<table id= "app" border="1" style="display:none">
+	<table id= "app" border="0" style="display:none">
 		<c:forEach items="${itemList}" var="item">
 			<c:if test="${item.category_Id == 1}"> 
 			<tr>
@@ -171,11 +172,11 @@ System.out.println("month: " +maxmonth +" day: "+maxday+" maxyear: "+maxyear);
 			</tr>
 			<form:form method="post" action="addProduct">
 				<tr>
-					<td><input value="${item.id}" name="id"></td>
-					<td><input value="${item.name}" name="name"></td>
+					<td><input value="${item.id}" name="id" readonly = "true"></td>
+					<td><input value="${item.name}" name="name" readonly = "true"></td>
 					<td><img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" height="42" width="42"></img></td>
-					<td><input value="${item.cost}" name="cost"></td>
-					<td><input value="${item.calories}" name="calories"></td> 
+					<td><input value="${item.cost}" name="cost" readonly = "true"></td>
+					<td><input value="${item.calories}" name="calories"  readonly = "true"></td> 
 					<td style="display :none"><input value="${item.cooking_Time}" name="cooking_Time" ></td>
 					
 					<td ><select class="1-100" name="quantity"></select></td>
@@ -190,7 +191,7 @@ System.out.println("month: " +maxmonth +" day: "+maxday+" maxyear: "+maxyear);
 			</c:if>
 			</c:forEach>
 	</table>
-	<table id= "des" border="1" style="display:none">
+	<table id= "des" border="0" style="display:none">
 		<c:forEach items="${itemList}" var="item">
 			<c:if test="${item.category_Id == 2}"> 
 			<tr>
@@ -203,11 +204,11 @@ System.out.println("month: " +maxmonth +" day: "+maxday+" maxyear: "+maxyear);
 			</tr>
 			<form:form method="post" action="addProduct">
 				<tr>
-					<td><input value="${item.id}" name="id"></td>
-					<td><input value="${item.name}" name="name"></td>
+					<td><input value="${item.id}" name="id" readonly = "true"></td>
+					<td><input value="${item.name}" name="name" readonly = "true"></td>
 					<td><img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" height="42" width="42"></img></td>
-					<td><input value="${item.cost}" name="cost"></td>
-					<td><input value="${item.calories}" name="calories"></td>
+					<td><input value="${item.cost}" name="cost" readonly = "true"></td>
+					<td><input value="${item.calories}" name="calories" readonly = "true"></td>
 					<td style="display :none"><input value="${item.cooking_Time}" name="cooking_Time" ></td>
 					<td><select class="1-100" name="quantity"></select></td>
 					<td>
@@ -221,7 +222,7 @@ System.out.println("month: " +maxmonth +" day: "+maxday+" maxyear: "+maxyear);
 			</c:if>
 			</c:forEach>
 	</table>
-	<table id= "dri" border="1" style="display:none">
+	<table id= "dri" border="0" style="display:none">
 		<c:forEach items="${itemList}" var="item">
 			<c:if test="${item.category_Id == 3}"> 
 			<tr>
@@ -234,11 +235,11 @@ System.out.println("month: " +maxmonth +" day: "+maxday+" maxyear: "+maxyear);
 			</tr>
 			<form:form method="post" action="addProduct">
 				<tr>
-					<td><input value="${item.id}" name="id"></td>
-					<td><input value="${item.name}" name="name"></td>
+					<td><input value="${item.id}" name="id" readonly = "true"></td>
+					<td><input value="${item.name}" name="name" readonly = "true"></td>
 					<td><img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" height="42" width="42"></img></td>
-					<td><input value="${item.cost}" name="cost"></td>
-					<td><input value="${item.calories}" name="calories"></td>
+					<td><input value="${item.cost}" name="cost" readonly = "true"></td>
+					<td><input value="${item.calories}" name="calories" readonly = "true"></td>
 					<td style="display :none"><input value="${item.cooking_Time}" name="cooking_Time" ></td>
 					<td><select class="1-100" name="quantity"></select></td>
 					<td>
@@ -252,7 +253,7 @@ System.out.println("month: " +maxmonth +" day: "+maxday+" maxyear: "+maxyear);
 			</c:if>
 			</c:forEach>
 	</table>
-	<table id= "mai" border="1" style="display:none">
+	<table id= "mai" border="0" style="display:none">
 		<c:forEach items="${itemList}" var="item">
 			<c:if test="${item.category_Id == 4}"> 
 			<tr>
@@ -265,11 +266,11 @@ System.out.println("month: " +maxmonth +" day: "+maxday+" maxyear: "+maxyear);
 			</tr>
 			<form:form method="post" action="addProduct">
 				<tr>
-					<td><input value="${item.id}" name="id"></td>
-					<td><input value="${item.name}" name="name"></td>
+					<td><input value="${item.id}" name="id" readonly = "true"></td>
+					<td><input value="${item.name}" name="name" readonly = "true"></td>
 					<td><img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" height="42" width="42"></img></td>
-					<td><input value="${item.cost}" name="cost"></td>
-					<td><input value="${item.calories}" name="calories"></td>
+					<td><input value="${item.cost}" name="cost" readonly = "true"></td>
+					<td><input value="${item.calories}" name="calories" readonly = "true"></td>
 					<td style="display :none"><input value="${item.cooking_Time}" name="cooking_Time" ></td>
 					<td><select class="1-100" name="quantity"></select></td>
 					<td>
@@ -352,3 +353,5 @@ $(function(){
 
 </body>
 </html>
+
+

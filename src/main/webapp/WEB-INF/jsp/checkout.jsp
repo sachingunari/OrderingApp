@@ -52,7 +52,7 @@ th, td {
 </style>
 <body>
 <ul>
-  <li><a class="active" href="loginCustomer">Home</a></li>
+  <li><a class="active" href="loginCust">Home</a></li>
 </ul>
 
 <div class ="row">

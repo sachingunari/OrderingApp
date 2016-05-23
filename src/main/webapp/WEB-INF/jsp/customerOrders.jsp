@@ -83,6 +83,7 @@ th, td {
 							<th>Item Quantity</th>
 							<th>Pick Up Time</th>
 							<th>Order Status</th>
+							<th>Cancel Orders</th>
 							
 					<% ArrayList<Orders> CustomerOrders = new ArrayList<Orders>();
 						CustomerOrders =(ArrayList)request.getAttribute("CustomerOrders");
@@ -90,12 +91,13 @@ th, td {
 					<%
 						String cancelString = "";
 						for(Orders o :CustomerOrders){
-						 	if(o.getOrders_status().equals("in Queue")){
+						 	if(o.getOrders_status().equals("In Queue")){
 								cancelString = "CANCEL";
 							} else{
 								cancelString = "";
 								
 							}
+						 	System.out.print("String is "+cancelString);
 						%>
 						<tr>
 							<td><input value="<%=o.getOrdersId().getOrder_Id()%>" style="display:none" name="order_Id"></input><%=o.getOrdersId().getOrder_Id()%></td>
