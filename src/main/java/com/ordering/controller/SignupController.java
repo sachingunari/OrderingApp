@@ -67,17 +67,16 @@ public class SignupController {
 	 @RequestMapping(value = "/enable/{username}/{userId}", method=RequestMethod.GET)
      public String doEnable(@PathVariable("username") String username,@Valid @ModelAttribute("user") User userForm , BindingResult result,@PathVariable("userId") String userId,Model model){
          
-System.out.println(userId);
+	 System.out.println(userId);
      User users = new User();
      if(userService.getUser(username)!=null){
      users=userService.getUser(username);
      }
          users.setEnabled(true);
-        // users.setUserIserID);
          
          userService.edit(users);
          System.out.println("final Block");
-         return "loginCustomer";
+         return "index";
 	 }
 	 
 	 @RequestMapping(value = "/tokenverify", params={ "userId"}, method = RequestMethod.POST)
@@ -85,19 +84,17 @@ System.out.println(userId);
 	            BindingResult result, Map<String, Object> model) {
 		 	
 		
-		// System.out.println(userId);
 	     User users = new User();
 	     if(userService.getUser(userForm.getUserId())!=null){
 	     users=userService.getUser(userForm.getUserId());
 	     
 	         users.setEnabled(true);
-	        // users.setUserIserID);
 	         
 	         userService.edit(users);
 	     }
 	         System.out.println("final Block");
           
-     return "loginCustomer";
+     return "index";
 	 }
 	 
 	 

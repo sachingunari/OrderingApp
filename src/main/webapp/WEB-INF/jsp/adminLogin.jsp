@@ -129,7 +129,7 @@
         <span class="icon-bar"></span>                        
       </button>
      
-      <a class="navbar-brand" href="/CRUDWebAppMavenized">TakeOutOrder</a>
+      <a class="navbar-brand" href="/OrderingApp">TakeOutOrder</a>
 	  
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">

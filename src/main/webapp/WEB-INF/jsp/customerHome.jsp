@@ -73,7 +73,6 @@ table {
     margin-left: 0px;
 ">
   <li><a class="active" href="#">Home</a></li>
-  <li><a href="#news">News</a></li>
   <li class="dropdown">
     <a href="javascript:void(0)" class="dropbtn" onclick="myFunction()">Menu Category</a>
     <div class="dropdown-content" id="myDropdown">
@@ -109,10 +108,14 @@ table {
 				</c:forEach>
 				<tr>
 						<td>total</td> 
-						<td>${totals}</td>	
-						<td>${message}</td>	
-						<td>${etime}</td>						
+						<td>${totals}</td>						
 					</tr>
+				<tr>
+					<td>${message}</td>	
+				</tr>
+				<tr>
+				<td>${etime}</td>
+				</tr>	
 
 			</table>		
 

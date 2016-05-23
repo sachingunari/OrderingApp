@@ -88,15 +88,12 @@ public class AdminController {
 		
 		try {
 			
-			switch(action.toLowerCase()){	//only in Java7 you can put String in switch
+			switch(action.toLowerCase()){	
 			case "create":
 				itemservice.add(item);
-//				studentService.add(student);
-	//			studentResult = student;
 				break;
 			case "edit":
 				itemservice.edit(item);
-	//			studentResult = student;
 				break;
 			case "delete":
 				int idToDelete = item.getId();
@@ -117,7 +114,6 @@ public class AdminController {
 		ArrayList tempList = new ArrayList<>();
 		tempList =(ArrayList) itemservice.getAllItems();
 		model.put("studentList", tempList);
-		//Item item = new Item();
         if(!action.toLowerCase().equals("delete")){
         	model.put("item", item);
         }

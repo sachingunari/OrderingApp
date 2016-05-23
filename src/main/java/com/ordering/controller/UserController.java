@@ -237,8 +237,6 @@ public class UserController {
 
 	@RequestMapping(value = "/placeorderz", method = RequestMethod.GET)
 	public String showRegistrationForms(@Valid @ModelAttribute("user") User userForm, Model model) {
-		// User user = new User();
-		// model.addAttribute("user", user);
 		return "customerHome";
 	}
 
@@ -390,7 +388,7 @@ public class UserController {
 					ord.setOrder_Total(total);
 					oservice.add(ord);
 
-					orderRelatedMessage += "\n \n" + counts + ": ";
+					orderRelatedMessage += "\n \n" + counts++ + ": ";
 					orderRelatedMessage += "\n Order_id: " + ord_Id;
 					orderRelatedMessage += "\n Order_quantity: " + i.getQuantity();
 					orderRelatedMessage += "\n Item_id: " + i.getId();
@@ -474,11 +472,15 @@ public class UserController {
 			}
 
 			if (found == true) {
-
-				model.addAttribute("etime", ready_Time);
+				if(ready_Time.before(day_Start_Time))
+				{
+					ready_Time.setTimeInMillis(day_Start_Time.getTimeInMillis());
+				}	
+				String s= ( sdf.format( ready_Time.getTimeInMillis() ));
+				model.addAttribute("etime"," Order not possible at the requested time."+ s+"is the earliest possible pickup time today");
 
 			} else {
-				model.addAttribute("message", "order not possible on this day");
+				model.addAttribute("message", "OOPS..Order not possible on this day !!");
 			}
 
 			count = 0;

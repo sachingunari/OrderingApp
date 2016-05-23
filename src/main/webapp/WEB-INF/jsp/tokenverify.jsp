@@ -33,7 +33,7 @@
         <form:form action="tokenverify" method="post" commandName="tokenverify">
                 <tr>					
 					Token:
-                    <input type="text" name="token" value="" required="required"> 
+                    <input type="text" name="userId" value="" required="required"> 
                 </tr>
                     <br>
                     <br>

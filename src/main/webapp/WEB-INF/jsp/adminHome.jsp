@@ -86,7 +86,7 @@ table {
   </li>
    <li><a href = "logout" style="
     border-left-width: 100px;
-    margin-left: 1200px;
+    margin-left: 900px;
 ">Logout</a></li>
 </ul>
 <div>
